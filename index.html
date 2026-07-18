@@ -94,9 +94,22 @@
             alert("Harap isi semua pertanyaan terlebih dahulu!");
             return;
         }
-        let p = []; for(let i=1; i<=15; i++) p.push(document.getElementById('p'+i).value);
-        let msg = `Feedback Pepito Siligita:%0A1. Nama: ${p[0]}%0A2. Usia: ${p[1]}%0A3. Asal: ${p[2]}%0A4. Lama di Bali: ${p[3]}%0A5. Domisili: ${p[4]}%0A6. Jarak: ${p[5]}%0A7. Produk: ${p[6]}%0A8. Frekuensi: ${p[7]}%0A9. Stok: ${p[8]}%0A10. Harga: ${p[9]}%0A11. Parkir: ${p[10]}%0A12. Layanan: ${p[11]}%0A13. Saran: ${p[12]}%0A14. Digital: ${p[13]}%0A15. Alasan: ${p[14]}`;
+        
+        let p = []; 
+        for(let i=1; i<=15; i++) {
+            p.push(document.getElementById('p'+i).value);
+        }
+
+        let msg = `Feedback Pepito Siligita:%0A` +
+                  `1. Nama: ${p[0]}%0A2. Usia: ${p[1]}%0A3. Asal: ${p[2]}%0A` +
+                  `4. Lama di Bali: ${p[3]}%0A5. Domisili: ${p[4]}%0A6. Jarak: ${p[5]}%0A` +
+                  `7. Produk: ${p[6]}%0A8. Frekuensi: ${p[7]}%0A9. Stok: ${p[8]}%0A` +
+                  `10. Harga: ${p[9]}%0A11. Parkir: ${p[10]}%0A12. Layanan: ${p[11]}%0A` +
+                  `13. Saran: ${p[12]}%0A14. Digital: ${p[13]}%0A15. Alasan: ${p[14]}`;
+        
         window.open(`https://wa.me/62895335252540?text=${msg}`, '_blank');
+    }
+</script>
     }
 </script>
 </body>
