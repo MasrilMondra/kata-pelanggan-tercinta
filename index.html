@@ -94,20 +94,30 @@
             alert("Harap isi semua pertanyaan terlebih dahulu!");
             return;
         }
-        
-        let p = []; 
-        for(let i=1; i<=15; i++) {
-            p.push(document.getElementById('p'+i).value);
+
+        let p = [];
+        for (let i = 1; i <= 15; i++) {
+            // Bersihkan newline dari textarea supaya tidak merusak format pesan,
+            // lalu ganti dengan spasi (baris baru asli tetap tidak valid di URL).
+            let val = document.getElementById('p' + i).value.replace(/[\r\n]+/g, ' ');
+            p.push(val);
         }
 
-        let msg = `Feedback Pepito Siligita:%0A` +
-                  `1. Nama: ${p[0]}%0A2. Usia: ${p[1]}%0A3. Asal: ${p[2]}%0A` +
-                  `4. Lama di Bali: ${p[3]}%0A5. Domisili: ${p[4]}%0A6. Jarak: ${p[5]}%0A` +
-                  `7. Produk: ${p[6]}%0A8. Frekuensi: ${p[7]}%0A9. Stok: ${p[8]}%0A` +
-                  `10. Harga: ${p[9]}%0A11. Parkir: ${p[10]}%0A12. Layanan: ${p[11]}%0A` +
-                  `13. Saran: ${p[12]}%0A14. Digital: ${p[13]}%0A15. Alasan: ${p[14]}`;
-        
-        window.open(`https://wa.me/62895335252540?text=${msg}`, '_blank');
+        // Susun pesan dulu dalam bentuk teks biasa (plain text) dengan newline literal (\n),
+        // BUKAN string URL. Encoding baru dilakukan sekali di paling akhir.
+        let msg =
+            `Feedback Pepito Siligita:\n` +
+            `1. Nama: ${p[0]}\n2. Usia: ${p[1]}\n3. Asal: ${p[2]}\n` +
+            `4. Lama di Bali: ${p[3]}\n5. Domisili: ${p[4]}\n6. Jarak: ${p[5]}\n` +
+            `7. Produk: ${p[6]}\n8. Frekuensi: ${p[7]}\n9. Stok: ${p[8]}\n` +
+            `10. Harga: ${p[9]}\n11. Parkir: ${p[10]}\n12. Layanan: ${p[11]}\n` +
+            `13. Saran: ${p[12]}\n14. Digital: ${p[13]}\n15. Alasan: ${p[14]}`;
+
+        // encodeURIComponent membungkus SELURUH pesan sekaligus, jadi karakter
+        // seperti & # % dan baris baru otomatis diubah menjadi kode aman untuk URL.
+        const encodedMsg = encodeURIComponent(msg);
+
+        window.open(`https://wa.me/62895335252540?text=${encodedMsg}`, '_blank');
     }
 </script>
 </body>
