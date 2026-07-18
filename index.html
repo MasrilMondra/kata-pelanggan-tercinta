@@ -96,10 +96,6 @@
         }
         
         let p = []; 
-        for(let i=1; i<=15; i++) {
-            p.push(document.getElementById('p'+i).value);
-        }
-
         let msg = `Feedback Pepito Siligita:%0A` +
                   `1. Nama: ${p[0]}%0A2. Usia: ${p[1]}%0A3. Asal: ${p[2]}%0A` +
                   `4. Lama di Bali: ${p[3]}%0A5. Domisili: ${p[4]}%0A6. Jarak: ${p[5]}%0A` +
@@ -108,8 +104,6 @@
                   `13. Saran: ${p[12]}%0A14. Digital: ${p[13]}%0A15. Alasan: ${p[14]}`;
         
         window.open(`https://wa.me/62895335252540?text=${msg}`, '_blank');
-    }
-</script>
     }
 </script>
 </body>
