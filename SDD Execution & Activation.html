@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepito Supermarket - Site Feasibility & Evaluation System</title>
+    <!-- Tailwind CSS untuk Desain Elegan & Futuristik -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+        
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-emerald-700 to-teal-800 p-6 text-white">
+            <h1 class="text-2xl font-bold">PEPITO SUPERMARKET</h1>
+            <p class="text-emerald-200 text-sm">Site Feasibility & Evaluation System (Tim Feasibility Market)</p>
+        </div>
+
+        <!-- Form Container -->
+        <div class="p-6 md:p-8 space-y-8">
+            
+            <!-- Bagian 1: Informasi Umum & Jalur Evaluasi -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-900/50 p-5 rounded-xl border border-slate-700">
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Nama Site / Kandidat Lokasi:</label>
+                    <input type="text" id="siteName" placeholder="Contoh: Pepito Canggu Central" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-emerald-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Jalur Evaluasi (Project Scope):</label>
+                    <select id="evalScope" onchange="toggleScope()" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 text-white focus:ring-2 focus:ring-emerald-500 outline-none">
+                        <option value="new">New Store (Site Baru)</option>
+                        <option value="existing">Existing Store (Toko Berjalan)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Bagian 2: Modul Parameter Lapangan & Finansial -->
+            <div class="space-y-6">
+                <h3 class="text-lg font-semibold text-emerald-400 border-b border-slate-700 pb-2">📊 Parameter Penilaian & Finansial[cite: 1]</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Demografi -->
+                    <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-700">
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Populasi Radius 3 KM (Jiwa)[cite: 1]:</label>
+                        <input type="number" id="popVal" value="45000" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white">
+                        <span class="text-[11px] text-slate-400 mt-1 block">Standar Min: 40.000 jiwa[cite: 1]</span>
+                    </div>
+                    <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-700">
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Persentase SES A-B (%)[cite: 1]:</label>
+                        <input type="number" id="sesVal" value="65" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white">
+                        <span class="text-[11px] text-slate-400 mt-1 block">Standar Min: 60%[cite: 1]</span>
+                    </div>
+                    <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-700">
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Capture Rate (%)[cite: 1]:</label>
+                        <input type="number" id="captureRate" value="5" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white">
+                        <span class="text-[11px] text-slate-400 mt-1 block">Estimasi persentase pengunjung</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Finansial -->
+                    <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-700">
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Proyeksi ROI (%)[cite: 1]:</label>
+                        <input type="number" id="roiVal" value="22" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white">
+                        <span class="text-[11px] text-slate-400 mt-1 block">Standar Min: 20%[cite: 1]</span>
+                    </div>
+                    <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-700">
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Payback Period (Tahun)[cite: 1]:</label>
+                        <input type="number" id="paybackVal" value="4.2" step="0.1" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white">
+                        <span class="text-[11px] text-slate-400 mt-1 block">Standar Maks: 5 Tahun[cite: 1]</span>
+                    </div>
+                    <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-700">
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Potensi Kanibalisasi (%)[cite: 1]:</label>
+                        <input type="number" id="cannibalVal" value="10" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white">
+                        <span class="text-[11px] text-slate-400 mt-1 block">Standar Maks: 15%[cite: 1]</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Kalkulasi Penjualan -->
+                    <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-700">
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Frekuensi Belanja / Bulan[cite: 1]:</label>
+                        <input type="number" id="freqVal" value="4" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white">
+                    </div>
+                    <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-700">
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Rata-rata Basket Size (IDR)[cite: 1]:</label>
+                        <input type="number" id="basketVal" value="175000" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modul Tambahan untuk Existing Store (Hidden by default) -->
+            <div id="existingModule" class="hidden space-y-4 bg-emerald-950/20 p-5 rounded-xl border border-emerald-800/50">
+                <h3 class="text-lg font-semibold text-emerald-400">🔄 Modul Evaluasi Toko Berjalan (Existing Store)[cite: 1]</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Pencapaian Revenue Aktual vs Proyeksi (%):</label>
+                        <input type="number" id="actualRevPct" value="88" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Kondisi Catchment & Fisik:</label>
+                        <select id="existingCond" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 text-white">
+                            <option value="normal">Stabil / Sesuai Target (Maintain)</option>[cite: 1]
+                            <option value="reno">Perlu Perbaikan Fisik / Assortment (Renovasi)</option>[cite: 1]
+                            <option value="reloc">Catchment Mulai Geser / Tak Optimal (Relokasi)</option>[cite: 1]
+                            <option value="down">Performa Turun / Skala Harus Diturunkan (Downsize)</option>[cite: 1]
+                            <option value="close">Di Bawah Standar / Terus Merugi (Tutup)</option>[cite: 1]
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tombol Generate / Eksekusi Akhir -->
+            <div class="pt-4">
+                <button onclick="generateReport()" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-4 rounded-xl shadow-lg transition transform active:scale-[0.99] cursor-pointer flex items-center justify-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2-2z" />
+                    </svg>
+                    <span>GENERATE SITE FEASIBILITY REPORT & CONCLUSION</span>
+                </button>
+            </div>
+
+            <!-- Hasil Output / Conclusion (Hidden initially) -->
+            <div id="outputSection" class="hidden space-y-6 pt-6 border-t border-slate-700">
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-700 space-y-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-800 pb-4 gap-4">
+                        <div>
+                            <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Hasil Analisis Akhir</span>
+                            <h2 id="outSiteName" class="text-xl font-bold text-white mt-1">Nama Site</h2>
+                        </div>
+                        <div id="badgeStatus" class="px-5 py-2 rounded-xl font-bold text-sm tracking-wide shadow-md">
+                            STATUS
+                        </div>
+                    </div>
+
+                    <!-- Ringkasan Metrik & Proyeksi -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                            <span class="text-xs text-slate-400 block">Estimasi Transaksi / Bulan[cite: 1]</span>
+                            <span id="outTransactions" class="text-lg font-bold text-emerald-400 mt-1 block">0</span>
+                        </div>
+                        <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                            <span class="text-xs text-slate-400 block">Estimasi Revenue / Bulan[cite: 1]</span>
+                            <span id="outRevMonth" class="text-lg font-bold text-emerald-400 mt-1 block">Rp 0</span>
+                        </div>
+                        <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                            <span class="text-xs text-slate-400 block">Proyeksi Revenue Tahun ke-1[cite: 1]</span>
+                            <span id="outRevYear" class="text-lg font-bold text-emerald-400 mt-1 block">Rp 0</span>
+                        </div>
+                    </div>
+
+                    <!-- Rincian Evaluasi Kriteria / Rekomendasi Strategis -->
+                    <div class="space-y-2">
+                        <h4 class="text-sm font-semibold text-slate-300">Detail Audit Kriteria / Keputusan SIMO[cite: 1]:</h4>
+                        <div id="outDetails" class="bg-slate-800/50 p-4 rounded-xl text-sm text-slate-300 space-y-2 border border-slate-700">
+                            <!-- Diisi via Javascript -->
+                        </div>
+                    </div>
+
+                    <!-- Tombol Cetak / Simpan Laporan -->
+                    <div class="flex justify-end pt-2">
+                        <button onclick="window.print()" class="bg-slate-700 hover:bg-slate-600 text-slate-200 text-sm font-medium px-5 py-2.5 rounded-lg transition">
+                            🖨️ Cetak / Simpan Laporan PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script Logika Kalkulator & Generator -->
+    <script>
+        function toggleScope() {
+            const scope = document.getElementById('evalScope').value;
+            const existingMod = document.getElementById('existingModule');
+            if (scope === 'existing') {
+                existingMod.classList.remove('hidden');
+            } else {
+                existingMod.classList.add('hidden');
+            }
+        }
+
+        function formatRupiah(angka) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(angka);
+        }
+
+        function generateReport() {
+            const siteName = document.getElementById('siteName').value || 'Site Tanpa Nama';
+            const scope = document.getElementById('evalScope').value;
+            
+            // Ambil Nilai Input
+            const pop = parseFloat(document.getElementById('popVal').value) || 0;
+            const ses = parseFloat(document.getElementById('sesVal').value) || 0;
+            const capture = parseFloat(document.getElementById('captureRate').value) || 0;
+            const roi = parseFloat(document.getElementById('roiVal').value) || 0;
+            const payback = parseFloat(document.getElementById('paybackVal').value) || 0;
+            const cannibal = parseFloat(document.getElementById('cannibalVal').value) || 0;
+            const freq = parseFloat(document.getElementById('freqVal').value) || 0;
+            const basket = parseFloat(document.getElementById('basketVal').value) || 0;
+
+            // Kalkulasi Formula Standar Pepito (Populasi Catchment x Capture Rate x Frekuensi Belanja x Basket Size)[cite: 1]
+            const estTransactionsPerMonth = pop * (capture / 100) * freq;
+            const estRevenuePerMonth = estTransactionsPerMonth * basket;
+            const estRevenueYearOne = estRevenuePerMonth * 12;
+
+            document.getElementById('outSiteName').innerText = siteName + (scope === 'new' ? ' (New Store Evaluation)' : ' (Existing Store Evaluation)');
+            document.getElementById('outTransactions').innerText = Math.round(estTransactionsPerMonth).toLocaleString('id-ID') + ' Transaksi';
+            document.getElementById('outRevMonth').innerText = formatRupiah(estRevenuePerMonth);
+            document.getElementById('outRevYear').innerText = formatRupiah(estRevenueYearOne);
+
+            let isGo = true;
+            let reasons = [];
+
+            // Evaluasi Kriteria Standar Perusahaan[cite: 1]
+            if (pop < 40000) { isGo = false; reasons.Element?.('- Populasi radius 3 KM (' + pop + ' jiwa) di bawah standar minimum (40.000 jiwa)[cite: 1].'); }
+            else { reasons.push('✅ Demografi Populasi: Memenuhi syarat (' + pop.toLocaleString('id-ID') + ' jiwa).'); }
+
+            if (ses < 60) { isGo = false; reasons.push('- Persentase SES A-B (' + ses + '%) di bawah standar minimum (60%)[cite: 1].'); }
+            else { reasons.push('✅ Profil Ekonomi SES A-B: Memenuhi syarat (' + ses + '%).'); }
+
+            if (roi < 20) { isGo = false; reasons.push('- Proyeksi ROI (' + roi + '%) di bawah standar minimum (20%)[cite: 1].'); }
+            else { reasons.push('✅ Proyeksi Finansial ROI: Memenuhi syarat (' + roi + '%).'); }
+
+            if (payback > 5) { isGo = false; reasons.push('- Payback Period (' + payback + ' tahun) melebihi batas maksimal (5 tahun)[cite: 1].'); }
+            else { reasons.push('✅ Payback Period: Memenuhi syarat (' + payback + ' Tahun).'); }
+
+            if (cannibal > 15) { isGo = false; reasons.push('- Risiko Kanibalisasi (' + cannibal + '%) melampaui batas maksimal (15%)[cite: 1].'); }
+            else { reasons.push('✅ Risiko Kanibalisasi: Terkendali (' + cannibal + '%).'); }
+
+            const badge = document.getElementById('badgeStatus');
+            const detailsDiv = document.getElementById('outDetails');
+            let detailsHtml = '<ul class="list-disc pl-5 space-y-1">';
+
+            if (scope === 'new') {
+                reasons.forEach(r => { detailsHtml += `<li>${r}</li>`; });
+                detailsHtml += '</ul>';
+
+                if (isGo) {
+                    badge.className = "px-5 py-2 rounded-xl font-bold text-sm tracking-wide shadow-md bg-emerald-600 text-white";
+                    badge.innerText = "STATUS: GO - SIAP SUBMISSION SIMO[cite: 1]";
+                    detailsHtml += '<p class="mt-3 text-emerald-400 font-semibold">Kesimpulan: Seluruh parameter kelayakan terpenuhi. Dokumen siap dikompilasi menjadi Site Feasibility Report untuk diajukan ke divisi SIMO[cite: 1].</p>';
+                } else {
+                    badge.className = "px-5 py-2 rounded-xl font-bold text-sm tracking-wide shadow-md bg-rose-600 text-white";
+                    badge.innerText = "STATUS: NO-GO (DITOLAK / ALTERNATIF)";
+                    detailsHtml += '<p class="mt-3 text-rose-400 font-semibold">Kesimpulan: Terdapat kriteria utama yang tidak terpenuhi. Site dinyatakan No-Go dan tim disarankan mencari lokasi alternatif[cite: 1].</p>';
+                }
+            } else {
+                // Existing Store Logic
+                const actualPct = parseFloat(document.getElementById('actualRevPct').value) || 0;
+                const cond = document.getElementById('existingCond').value;
+                
+                badge.className = "px-5 py-2 rounded-xl font-bold text-sm tracking-wide shadow-md bg-blue-600 text-white";
+                badge.innerText = "STATUS: EVALUASI EXISTING SELESAI";
+
+                detailsHtml += `<li>Pencapaian Revenue Aktual vs Proyeksi: <b>${actualPct}%</b></li>`;
+                
+                let recommendationText = "";
+                if(cond === 'normal') recommendationText = "Maintain (Performa stabil sesuai target, lanjutkan operasional & program loyalitas)[cite: 1].";
+                else if(cond === 'reno') recommendationText = "Renovasi (Perlu perbaikan fisik, tata letak, atau penyesuaian assortment produk)[cite: 1].";
+                else if(cond === 'reloc') recommendationText = "Relokasi (Catchment area sekitar toko sudah tidak optimal/bergeser)[cite: 1].";
+                else if(cond === 'down') recommendationText = "Downsize (Skala operasional toko perlu diturunkan untuk efisiensi biaya)[cite: 1].";
+                else recommendationText = "Tutup / Close (Performa terus di bawah standar tanpa prospek perbaikan finansial)[cite: 1].";
+
+                detailsHtml += `<li>Rekomendasi Strategis Manajemen: <b class="text-emerald-400">${recommendationText}</b></li></ul>`;
+            }
+
+            detailsDiv.innerHTML = detailsHtml;
+            document.getElementById('outputSection').classList.remove('hidden');
+            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
