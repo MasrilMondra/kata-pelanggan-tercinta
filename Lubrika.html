@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lubrixa.id - Marketplace Oli Resmi Khusus Bengkel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { font-family: 'Plus Jakarta Sans', sans-serif; }
+        /* Efek neon futuristik ringan dari versi Tailwind */
+        .neon-border { border: 1px solid rgba(249, 115, 22, 0.5); box-shadow: 0 0 15px rgba(249, 115, 22, 0.25); }
+        .neon-glow { box-shadow: 0 0 20px rgba(249, 115, 22, 0.4); }
+        .qty-btn { user-select: none; }
+        .qty-btn:active { transform: scale(0.92); }
+        @keyframes trackPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.6); }
+            50% { box-shadow: 0 0 0 8px rgba(249, 115, 22, 0); }
+        }
+        .track-active { animation: trackPulse 1.6s infinite; }
+        .track-fill { transition: width 0.6s ease; }
+        /* Custom Scrollbar untuk Tab Kategori */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen pb-20">
+
+    <div class="bg-slate-950 text-xs py-2 px-4 border-b border-orange-500/40 flex flex-wrap justify-between items-center gap-2">
+        <div class="flex items-center gap-4 flex-wrap text-slate-300">
+            <span><i class="fa-solid fa-phone text-orange-400"></i> CS: <strong class="text-white">085600056789</strong></span>
+            <span><i class="fa-solid fa-envelope text-orange-400"></i> Email: <strong class="text-white">lubricaa.id membantu</strong></span>
+            <span class="hidden sm:inline"><i class="fa-solid fa-shield-halved text-green-400"></i> 100% Asli & Garansi Uang Kembali</span>
+        </div>
+        <a href="https://wa.me/6285600056789?text=Halo%20CS%20Lubrixa.id,%20saya%20ingin%20berkonsultasi%20pesanan%20oli%20bengkel" target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold px-3 py-1 rounded-full flex items-center gap-1.5 transition transform hover:scale-105">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Chat WA CS (085600056789)
+        </a>
+    </div>
+
+    <header class="bg-slate-950/90 backdrop-blur sticky top-0 z-40 border-b border-slate-800 p-4 shadow-xl">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3 cursor-pointer w-full md:w-auto justify-between md:justify-start" onclick="showView('home-view')">
+                <div class="flex items-center gap-2">
+                    <div class="bg-gradient-to-br from-orange-500 to-amber-600 text-white font-black text-xl px-3 py-1.5 rounded-xl shadow-lg shadow-orange-500/20">
+                        <i class="fa-solid fa-oil-can"></i> LX
+                    </div>
+                    <div>
+                        <div class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-orange-400 tracking-tight">
+                            Lubrixa<span class="text-orange-500">.id</span>
+                        </div>
+                        <div class="text-[10px] text-orange-400/80 font-bold uppercase tracking-widest -mt-1">Direct from Brands</div>
+                    </div>
+                </div>
+                <button onclick="showWelcomeModal()" class="md:hidden bg-slate-800 border border-slate-700 text-orange-400 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                    <i class="fa-solid fa-warehouse"></i> <span id="mobileBengkelName">Bengkel Anda</span>
+                </button>
+            </div>
+
+            <div class="relative w-full md:max-w-md">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500"></i>
+                <input type="text" id="searchInput" placeholder="Cari oli (AHM, Yamalube, Enduro, Motul, Matic)..." 
+                    onkeyup="filterProducts()" 
+                    class="w-full bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-full py-2 pl-10 pr-4 text-sm text-white placeholder-slate-500 outline-none transition shadow-inner">
+            </div>
+
+            <div class="hidden md:flex items-center gap-3">
+                <button onclick="showWelcomeModal()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-orange-400 px-3 py-2 rounded-full text-xs font-bold flex items-center gap-2 transition">
+                    <i class="fa-solid fa-warehouse"></i> <span id="displayBengkelName">Bengkel Anda (Klik Isi Data)</span>
+                </button>
+                <button onclick="showView('cart-view')" class="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white px-5 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg shadow-orange-600/30 transition transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-cart-shopping"></i> Keranjang
+                    <span id="cart-count" class="bg-slate-950 text-orange-400 px-2 py-0.5 rounded-full text-xs font-black border border-orange-500/30">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-4 md:p-6">
+
+        <div id="home-view" class="block">
+            <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-800 rounded-2xl p-6 mb-8 shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
+                    <div class="lg:col-span-6 space-y-2">
+                        <span class="bg-orange-500/20 text-orange-400 text-xs font-extrabold px-3 py-1 rounded-full border border-orange-500/30 uppercase tracking-wider">Platform Resmi Bengkel</span>
+                        <h1 class="text-2xl md:text-3xl font-black text-white leading-tight">
+                            Menghubungkan Bengkel dengan <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500">Oli Orisinal 24 Jam</span>
+                        </h1>
+                        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+                            "Langsung dari brand resmi dengan harga transparan satu provinsi. Memotong rantai pasok palsu dan menjamin keaslian 100% sampai ke daerah pelosok."
+                        </p>
+                    </div>
+                    <div class="lg:col-span-6 grid grid-cols-2 gap-3">
+                        <div class="bg-slate-900/80 border border-slate-700/80 p-3.5 rounded-xl flex items-center gap-3">
+                            <i class="fa-solid fa-shield-cat text-orange-400 text-2xl"></i>
+                            <div class="text-xs"><strong class="text-white block text-sm">100% Original</strong> Garansi uang kembali</div>
+                        </div>
+                        <div class="bg-slate-900/80 border border-slate-700/80 p-3.5 rounded-xl flex items-center gap-3">
+                            <i class="fa-solid fa-truck-fast text-orange-400 text-2xl"></i>
+                            <div class="text-xs"><strong class="text-white block text-sm">24-Hour Delivery</strong> Kirim cepat ke rural area</div>
+                        </div>
+                        <div class="bg-slate-900/80 border border-slate-700/80 p-3.5 rounded-xl flex items-center gap-3">
+                            <i class="fa-solid fa-tag text-orange-400 text-2xl"></i>
+                            <div class="text-xs"><strong class="text-white block text-sm">1 Harga 1 Provinsi</strong> Harga jujur transparan</div>
+                        </div>
+                        <div class="bg-slate-900/80 border border-slate-700/80 p-3.5 rounded-xl flex items-center gap-3">
+                            <i class="fa-solid fa-gift text-green-400 text-2xl"></i>
+                            <div class="text-xs"><strong class="text-green-400 block text-sm">Free Delivery</strong> Gratis ongkir min. 5 dus</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-6">
+                <button class="tab-btn active bg-orange-600 text-white font-bold px-4 py-2 rounded-full text-sm whitespace-nowrap shadow-lg shadow-orange-600/20 transition" onclick="setCategory('ALL', this)">🔥 Semua Produk</button>
+                <button class="tab-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-full text-sm whitespace-nowrap border border-slate-700 transition" onclick="setCategory('AHM', this)">🔴 AHM Oil (Honda)</button>
+                <button class="tab-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-full text-sm whitespace-nowrap border border-slate-700 transition" onclick="setCategory('YAMALUBE', this)">🔵 Yamalube (Yamaha)</button>
+                <button class="tab-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-full text-sm whitespace-nowrap border border-slate-700 transition" onclick="setCategory('PERTAMINA', this)">🟢 Pertamina Enduro</button>
+                <button class="tab-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-full text-sm whitespace-nowrap border border-slate-700 transition" onclick="setCategory('MOTUL', this)">🟡 Motul / Federal</button>
+                <button onclick="openOrderHistoryModal()" class="ml-auto bg-slate-800 hover:bg-slate-700 text-orange-400 border border-orange-500/30 font-bold px-4 py-2 rounded-full text-sm whitespace-nowrap flex items-center gap-2 transition shadow-md">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Pesanan & Estimasi Tiba
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="product-list">
+                </div>
+        </div>
+
+        <div id="cart-view" class="hidden">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-black text-white flex items-center gap-3">
+                    <button onclick="showView('home-view')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 w-10 h-10 rounded-full flex items-center justify-center transition">←</button>
+                    <span>Keranjang Belanja Bengkel</span>
+                </h2>
+                <span class="text-xs font-mono text-slate-400">Satuan Pembelian: Karton / Dus</span>
+            </div>
+
+            <div class="bg-slate-800/90 rounded-2xl p-6 border border-slate-700 shadow-2xl">
+                <div id="cart-items" class="space-y-4 mb-6">
+                    </div>
+                
+                <div class="border-t border-slate-700 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div>
+                        <span class="text-sm text-slate-400 block">Total Kuantitas Oli:</span>
+                        <span id="cart-total-dus" class="text-lg font-bold text-white">0 Dus</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-sm text-slate-400 block">Total Harga Barang:</span>
+                        <span id="cart-total" class="text-3xl font-black text-orange-400">Rp 0</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                    <button onclick="showView('home-view')" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-3.5 rounded-xl transition">
+                        + Tambah Oli Lainnya
+                    </button>
+                    <button onclick="goToCheckout()" class="w-full bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-extrabold py-3.5 rounded-xl shadow-lg shadow-orange-600/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                        <span>Lanjut Pengiriman & Bayar</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="checkout-view" class="hidden">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-black text-white flex items-center gap-3">
+                    <button onclick="showView('cart-view')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 w-10 h-10 rounded-full flex items-center justify-center transition">←</button>
+                    <span>Checkout & Konfirmasi</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl">
+                        <h3 class="font-bold text-orange-400 mb-2 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-truck-fast"></i> Pilih Kurir & Layanan Delivery
+                        </h3>
+                        <p class="text-xs text-slate-400 mb-4">*Tarif Rp 4.000/km (Min. order 2 dus). <span class="text-green-400 font-bold">Gratis Ongkir untuk order ≥ 5 dus!</span></p>
+                        
+                        <div class="space-y-3" id="shipping-options">
+                            <label class="flex items-center p-3.5 bg-slate-900/60 border border-slate-700 rounded-xl cursor-pointer hover:border-orange-500 transition">
+                                <input type="radio" name="shipping" value="Kurir Lubrika Express" checked onchange="calculateFinalCheckout()" class="mr-3.5 accent-orange-500 w-4 h-4">
+                                <div class="flex-1">
+                                    <div class="font-bold text-white text-sm">Kurir Resmi Lubrika.id (Direct Distribution)</div>
+                                    <div class="text-xs text-slate-400">Estimasi tiba 12 - 24 Jam (Prioritas Bengkel)</div>
+                                </div>
+                                <span class="text-xs font-bold text-orange-400 bg-orange-500/10 px-2.5 py-1 rounded-lg border border-orange-500/20">Rekomendasi</span>
+                            </label>
+                            <label class="flex items-center p-3.5 bg-slate-900/60 border border-slate-700 rounded-xl cursor-pointer hover:border-orange-500 transition">
+                                <input type="radio" name="shipping" value="TIKI Reguler / Trucking" onchange="calculateFinalCheckout()" class="mr-3.5 accent-orange-500 w-4 h-4">
+                                <div class="flex-1">
+                                    <div class="font-bold text-white text-sm">TIKI - Express Delivery</div>
+                                    <div class="text-xs text-slate-400">Estimasi tiba 1 - 2 Hari Kerja</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center p-3.5 bg-slate-900/60 border border-slate-700 rounded-xl cursor-pointer hover:border-orange-500 transition">
+                                <input type="radio" name="shipping" value="JNE Express / Trucking" onchange="calculateFinalCheckout()" class="mr-3.5 accent-orange-500 w-4 h-4">
+                                <div class="flex-1">
+                                    <div class="font-bold text-white text-sm">JNE - Trucking / Reguler</div>
+                                    <div class="text-xs text-slate-400">Estimasi tiba 1 - 2 Hari Kerja</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center p-3.5 bg-slate-900/60 border border-slate-700 rounded-xl cursor-pointer hover:border-orange-500 transition">
+                                <input type="radio" name="shipping" value="Id Express Cargo" onchange="calculateFinalCheckout()" class="mr-3.5 accent-orange-500 w-4 h-4">
+                                <div class="flex-1">
+                                    <div class="font-bold text-white text-sm">Id Express - Cargo Service</div>
+                                    <div class="text-xs text-slate-400">Estimasi tiba 2 - 3 Hari Kerja</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl">
+                        <h3 class="font-bold text-orange-400 mb-4 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-wallet"></i> Pilih Metode Pembayaran
+                        </h3>
+                        <div class="space-y-3" id="payment-options">
+                            <label class="flex items-start p-3.5 bg-slate-900/60 border border-slate-700 rounded-xl cursor-pointer hover:border-orange-500 transition">
+                                <input type="radio" name="payment" value="Transfer Rekening BCA - 6470371470 (a.n. Lubrixa ID)" checked onchange="updatePaymentDesc()" class="mr-3.5 mt-1 accent-orange-500 w-4 h-4">
+                                <div class="flex-1">
+                                    <div class="font-bold text-white text-sm">Transfer Rekening BCA</div>
+                                    <div class="text-xs font-mono text-orange-300 mt-0.5">No. Rek: 6470371470 (a.n. Lubrixa Indonesia)</div>
+                                    <div class="text-[11px] text-slate-400 mt-1">Verifikasi manual via bukti transfer WhatsApp CS.</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start p-3.5 bg-slate-900/60 border border-slate-700 rounded-xl cursor-pointer hover:border-orange-500 transition">
+                                <input type="radio" name="payment" value="Virtual Account BCA - 880006470371470" onchange="updatePaymentDesc()" class="mr-3.5 mt-1 accent-orange-500 w-4 h-4">
+                                <div class="flex-1">
+                                    <div class="font-bold text-white text-sm">Virtual Account BCA</div>
+                                    <div class="text-xs font-mono text-orange-300 mt-0.5">No. VA: 880006470371470</div>
+                                    <div class="text-[11px] text-slate-400 mt-1">Dicek otomatis oleh sistem dalam 5 menit.</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start p-3.5 bg-slate-900/60 border border-slate-700 rounded-xl cursor-pointer hover:border-orange-500 transition">
+                                <input type="radio" name="payment" value="COD (Cash On Delivery)" onchange="updatePaymentDesc()" class="mr-3.5 mt-1 accent-orange-500 w-4 h-4">
+                                <div class="flex-1">
+                                    <div class="font-bold text-white text-sm">COD (Cash On Delivery)</div>
+                                    <div class="text-[11px] text-slate-400 mt-1">Bayar tunai kepada kurir saat oli resmi tiba dan dicek keasliannya di bengkel Anda.</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl sticky top-24">
+                        <h3 class="font-bold text-white mb-4 text-lg border-b border-slate-700 pb-3 flex items-center justify-between">
+                            <span>Ringkasan Tagihan</span>
+                            <span class="text-xs text-orange-400 font-normal cursor-pointer hover:underline" onclick="showWelcomeModal()">Edit Alamat</span>
+                        </h3>
+
+                        <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-700/80 mb-5 space-y-1 text-xs">
+                            <div class="text-slate-400 flex justify-between"><span>Penerima:</span> <strong class="text-white" id="chk-nama">-</strong></div>
+                            <div class="text-slate-400 flex justify-between"><span>Bengkel:</span> <strong class="text-orange-400" id="chk-bengkel">-</strong></div>
+                            <div class="text-slate-400 flex justify-between"><span>No. HP:</span> <strong class="text-white" id="chk-hp">-</strong></div>
+                            <div class="text-slate-400 pt-1 border-t border-slate-800"><span>Alamat:</span> <p class="text-white font-medium mt-0.5" id="chk-alamat">-</p></div>
+                            <div class="text-slate-400 flex justify-between pt-1"><span>Jarak Gudang:</span> <strong class="text-amber-400" id="chk-jarak">10 km</strong></div>
+                        </div>
+
+                        <div class="space-y-3 text-sm mb-6">
+                            <div class="flex justify-between text-slate-300">
+                                <span>Total Belanja Oli (<span id="chk-total-dus">0</span>):</span>
+                                <strong class="text-white font-mono" id="chk-harga-barang">Rp 0</strong>
+                            </div>
+                            <div class="flex justify-between items-center text-slate-300">
+                                <span>Ongkos Kirim:</span>
+                                <div class="text-right" id="chk-box-ongkir">-</div>
+                            </div>
+                            <div id="chk-free-badge" class="hidden bg-green-500/10 border border-green-500/30 text-green-400 text-xs p-2.5 rounded-xl text-center font-bold">
+                                <i class="fa-solid fa-gift"></i> Selamat! Anda mendapat Free Delivery (≥ 5 Dus).
+                            </div>
+                            <div class="border-t border-slate-700 pt-3 flex justify-between items-center">
+                                <span class="font-bold text-white text-base">Total Tagihan:</span>
+                                <span class="text-2xl font-black text-orange-400 font-mono" id="chk-total-bayar">Rp 0</span>
+                            </div>
+                        </div>
+
+                        <button onclick="processOrder()" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-black py-4 rounded-xl text-base transition shadow-lg shadow-green-600/30 neon-border flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-check-double"></i> Konfirmasi & Bayar Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="success-view" class="hidden text-center py-10">
+            <div class="max-w-2xl mx-auto bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-2xl neon-glow relative">
+                <div class="w-16 h-16 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl border border-green-500/40">
+                    🚀
+                </div>
+                <h2 class="text-2xl md:text-3xl font-black text-white mb-2">Pesanan Oli Berhasil Dibuat!</h2>
+                <p class="text-slate-300 text-sm max-w-md mx-auto mb-6">
+                    Yeay! Kurir kami sedang bersiap berlari membawa omset oli resmi langsung ke <strong class="text-orange-400" id="succ-bengkel-name">Bengkel Anda</strong>. 🏃‍♂️💨
+                </p>
+
+                <div class="bg-slate-900/90 p-5 rounded-2xl text-left border border-slate-700/80 mb-6 space-y-2 text-sm font-mono">
+                    <div class="flex justify-between text-slate-400"><span>Order ID:</span> <strong class="text-white text-base" id="order-id">#LBRK-001</strong></div>
+                    <div class="flex justify-between text-slate-400"><span>Total Dibayar:</span> <strong class="text-orange-400 font-bold text-lg" id="final-paid">Rp 0</strong></div>
+                    <div class="flex justify-between text-slate-400"><span>Metode Bayar:</span> <strong class="text-white font-sans text-xs" id="final-method">-</strong></div>
+                    <div class="flex justify-between text-slate-400"><span>Kurir Delivery:</span> <strong class="text-white font-sans text-xs" id="final-kurir">-</strong></div>
+                </div>
+
+                <div class="bg-slate-900 p-5 rounded-2xl border border-slate-700 text-left mb-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-satellite-dish text-orange-400"></i> Live Tracking Pengiriman</span>
+                        <span class="text-xs text-slate-400">Estimasi Tiba: <strong id="eta-date" class="text-orange-400 font-sans">-</strong></span>
+                    </div>
+
+                    <div class="relative w-full h-2.5 bg-slate-800 rounded-full mb-6 overflow-hidden border border-slate-700">
+                        <div id="track-fill" class="track-fill absolute left-0 top-0 h-full bg-gradient-to-r from-orange-600 via-orange-500 to-amber-400 rounded-full" style="width: 12%;"></div>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-1 text-center relative z-10" id="track-steps">
+                        <div class="flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-orange-500 track-active border-2 border-orange-300 shadow-md"></div>
+                            <span class="text-[11px] mt-1.5 text-orange-300 font-bold leading-tight">1. Diterima</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-slate-700 border-2 border-slate-500"></div>
+                            <span class="text-[11px] mt-1.5 text-slate-500 leading-tight">2. Diproses</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-slate-700 border-2 border-slate-500"></div>
+                            <span class="text-[11px] mt-1.5 text-slate-500 leading-tight">3. Dikirim</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-slate-700 border-2 border-slate-500"></div>
+                            <span class="text-[11px] mt-1.5 text-slate-500 leading-tight">4. Tiba</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5 p-3 bg-slate-800/80 rounded-xl border border-slate-700/60">
+                        <p class="text-xs text-slate-300 flex items-center gap-2 m-0" id="track-status">
+                            <i class="fa-solid fa-circle-info text-orange-400"></i>
+                            <span>Pesanan kamu sudah kami terima dan sedang disiapkan bengkel gudang.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <button id="btn-wa-invoice" onclick="sendToWhatsAppCS()" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Kirim Invoice Pesanan ke WhatsApp CS (085600056789)
+                    </button>
+                    <button onclick="resetApp()" class="text-sm text-slate-400 hover:text-white underline block mx-auto py-2">
+                        Kembali ke Katalog Beranda
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="welcomeModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative animate-fade-in">
+            <div class="text-center mb-6">
+                <div class="inline-flex items-center gap-2 bg-slate-800 border border-slate-700 px-4 py-2 rounded-2xl text-xl font-black text-white mb-3 shadow-lg">
+                    <i class="fa-solid fa-oil-can text-orange-500"></i> Lubrixa<span class="text-orange-500">.id</span>
+                </div>
+                <h3 class="text-lg font-black text-white">Selamat Datang di Marketplace Bengkel</h3>
+                <p class="text-xs text-slate-400 mt-1">Lengkapi biodata bengkel Anda untuk kemudahan pesanan real-time & estimasi pengiriman akurat.</p>
+            </div>
+
+            <form id="biodataForm" onsubmit="saveBiodata(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1"><i class="fa-solid fa-user text-orange-400"></i> Nama Penanggung Jawab:</label>
+                    <input type="text" id="bioNama" required placeholder="Contoh: Budi Santoso" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-orange-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1"><i class="fa-brands fa-whatsapp text-green-400"></i> No. HP / WhatsApp Bengkel:</label>
+                    <input type="tel" id="bioHp" required placeholder="Contoh: 081234567890" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-orange-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1"><i class="fa-solid fa-warehouse text-orange-400"></i> Nama Bengkel:</label>
+                    <input type="text" id="bioBengkel" required placeholder="Contoh: Budi Motor Jaya" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-orange-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1"><i class="fa-solid fa-map-location-dot text-orange-400"></i> Alamat Lengkap Bengkel:</label>
+                    <input type="text" id="bioAlamat" required placeholder="Jl. Raya Solo - Madiun Km 5, Madiun, Jawa Timur" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-orange-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1"><i class="fa-solid fa-route text-orange-400"></i> Estimasi Jarak dari Gudang Lubrixa.id (in KM):</label>
+                    <input type="number" id="bioJarak" required min="1" value="10" placeholder="10" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-orange-500 outline-none">
+                    <p class="text-[10px] text-slate-400 mt-1">*Tarif kurir Rp 4.000/km (Min. beli 2 dus). Gratis ongkir jika beli ≥ 5 dus.</p>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orange-600/30 transition mt-2 flex items-center justify-center gap-2">
+                    <span>Mari Berbelanja</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="detailModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative">
+            <button onclick="closeModal('detailModal')" class="absolute top-4 right-4 bg-slate-800 text-slate-400 hover:text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">&times;</button>
+            <div id="detailModalBody"></div>
+        </div>
+    </div>
+
+    <div id="orderHistoryModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center pb-4 border-b border-slate-800 mb-4">
+                <h3 class="text-lg font-black text-white flex items-center gap-2"><i class="fa-solid fa-clock-rotate-left text-orange-400"></i> Riwayat Pesanan Bengkel</h3>
+                <button onclick="closeModal('orderHistoryModal')" class="bg-slate-800 text-slate-400 hover:text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">&times;</button>
+            </div>
+            <div id="orderHistoryContainer" class="overflow-y-auto space-y-4 pr-1 flex-1"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- DATABASE 8 PRODUK ENTERPRISE (Deduplikasi dari versi 1 & 2) ---
+        const products = [
+            {
+                id: 1, name: "AHM Oil MPX-2 10W-30 MB (Matic)", brand: "AHM", price: 950000, stock: 45, unit: "Dus (24 Botol @ 0.8L)", compatibility: "Motor Matic Honda",
+                desc: "Oli asli resmi Honda untuk motor matic (BeAT, Vario, Scoopy, PCX). Spesifikasi JASO MB, API SL. Memastikan efisiensi bahan bakar maksimal dan perlindungan mesin terhadap gesekan berat. Garansi 100% Original AHM."
+            },
+            {
+                id: 2, name: "AHM Oil SPX-2 10W-30 Full Synthetic", brand: "AHM", price: 1250000, stock: 28, unit: "Dus (24 Botol @ 0.8L)", compatibility: "Motor Matic Premium Honda",
+                desc: "Oli Full Synthetic unggulan dari AHM untuk performa tinggi motor matic. Memberikan perlindungan ekstra pada temperatur tinggi dan putaran mesin cepat. Garansi uang kembali jika palsu."
+            },
+            {
+                id: 3, name: "Yamalube Super Matic 10W-40 SL", brand: "YAMALUBE", price: 1100000, stock: 50, unit: "Dus (24 Botol @ 1L)", compatibility: "Motor Matic Yamaha 150cc+",
+                desc: "Oli resmi Yamaha yang diformulasikan khusus untuk motor matic premium (NMAX, Aerox, Lexi, XMAX). Mengurangi panas berlebih dan menjaga kebersihan mesin. 100% Original Yamalube."
+            },
+            {
+                id: 4, name: "Yamalube Silver Matic 20W-40", brand: "YAMALUBE", price: 880000, stock: 65, unit: "Dus (24 Botol @ 0.8L)", compatibility: "Motor Matic Yamaha 110-125cc",
+                desc: "Oli standar pabrikan untuk motor matic Yamaha harian (Mio, Fino, FreeGo, Gear). Hemat bahan bakar dan melindungi mesin dari keausan awal."
+            },
+            {
+                id: 5, name: "Pertamina Enduro Matic-G 20W-40", brand: "PERTAMINA", price: 900000, stock: 80, unit: "Dus (24 Botol @ 0.8L)", compatibility: "Semua Motor Matic 4-Tak",
+                desc: "Oli sintetik produk kebanggaan Indonesia dengan formula wangi khas. Sangat tangguh untuk lalu lintas macet dan kondisi jalanan ekstrem di rural area maupun perkotaan."
+            },
+            {
+                id: 6, name: "Pertamina Enduro 4T Racing 10W-40", brand: "PERTAMINA", price: 1150000, stock: 12, unit: "Dus (24 Botol @ 1L)", compatibility: "Motor Bebek & Sport Kopling Basah",
+                desc: "Oli motor bebek dan sport berkinerja tinggi dengan fitur anti-selip kopling (JASO MA2). Memiliki ketahanan degradasi tinggi untuk perjalanan jarak jauh dan beban berat."
+            },
+            {
+                id: 7, name: "Motul Scooter LE 10W-30 4T", brand: "MOTUL", price: 1650000, stock: 4, unit: "Dus (24 Botol @ 0.8L)", compatibility: "Motor Matic Honda / Yamaha / Vespa",
+                desc: "Oli kelas dunia dari Prancis untuk motor skuter matic. Diformulasikan dengan HC-Tech yang menjaga suhu mesin tetap dingin dan suara mesin sangat halus."
+            },
+            {
+                id: 8, name: "Federal Oil Ultratec 20W-50", brand: "MOTUL", price: 850000, stock: 90, unit: "Dus (24 Botol @ 0.8L)", compatibility: "Motor Bebek & Motor Tua",
+                desc: "Oli legenda pilihan utama bengkel untuk motor bebek kerja keras (Supra, Jupiter, Smash). Kekentalan optimal untuk mencegah kebocoran dan meredam suara mesin kasar."
+            }
+        ];
+
+        // Estimasi waktu tiba untuk kalkulasi ETA (Gabungan dari versi 1)
+        const shippingEta = {
+            "Kurir Lubrika Express": { min: 0, max: 1, label: "12 - 24 Jam (Prioritas)" },
+            "TIKI Reguler / Trucking": { min: 1, max: 2, label: "1 - 2 Hari" },
+            "JNE Express / Trucking": { min: 1, max: 2, label: "1 - 2 Hari" },
+            "Id Express Cargo": { min: 2, max: 3, label: "2 - 3 Hari" }
+        };
+
+        // --- STATE APLIKASI ---
+        let cart = [];
+        let selectedQty = {}; // Qty sementara sebelum masuk keranjang
+        let currentCategory = 'ALL';
+        let biodata = { nama: "", hp: "", bengkel: "", alamat: "", jarak: 10 };
+        let ordersHistory = [];
+        let latestOrder = null; // Menyimpan pesanan terakhir untuk tombol WA invoice
+        let trackingInterval = null;
+
+        // Format Uang Rupiah
+        const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+
+        // Inisialisasi Saat Load
+        window.onload = () => {
+            const savedBio = localStorage.getItem('lubrixa_bio');
+            if (savedBio) {
+                biodata = JSON.parse(savedBio);
+                updateBengkelDisplay();
+            } else {
+                showWelcomeModal();
+            }
+
+            const savedOrders = localStorage.getItem('lubrixa_orders');
+            if (savedOrders) ordersHistory = JSON.parse(savedOrders);
+
+            products.forEach(p => { selectedQty[p.id] = 1; });
+            renderProducts();
+            updateCartUI();
+        };
+
+        // --- MANAJEMEN BIODATA (Fitur 10) ---
+        function showWelcomeModal() {
+            if (biodata.nama) {
+                document.getElementById('bioNama').value = biodata.nama;
+                document.getElementById('bioHp').value = biodata.hp;
+                document.getElementById('bioBengkel').value = biodata.bengkel;
+                document.getElementById('bioAlamat').value = biodata.alamat;
+                document.getElementById('bioJarak').value = biodata.jarak;
+            }
+            document.getElementById('welcomeModal').classList.remove('hidden');
+        }
+
+        function saveBiodata(e) {
+            e.preventDefault();
+            biodata = {
+                nama: document.getElementById('bioNama').value,
+                hp: document.getElementById('bioHp').value,
+                bengkel: document.getElementById('bioBengkel').value,
+                alamat: document.getElementById('bioAlamat').value,
+                jarak: parseInt(document.getElementById('bioJarak').value) || 5
+            };
+            localStorage.setItem('lubrixa_bio', JSON.stringify(biodata));
+            updateBengkelDisplay();
+            closeModal('welcomeModal');
+            alert(`✅ Selamat! Biodata '${biodata.bengkel}' berhasil disimpan.`);
+            if (!document.getElementById('checkout-view').classList.contains('hidden')) {
+                calculateFinalCheckout();
+            }
+        }
+
+        function updateBengkelDisplay() {
+            const txt = `<i class="fa-solid fa-warehouse text-orange-400"></i> <span>${biodata.bengkel} (${biodata.jarak} km)</span>`;
+            document.getElementById('displayBengkelName').innerHTML = txt;
+            document.getElementById('mobileBengkelName').innerText = `${biodata.bengkel}`;
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // --- RENDER PRODUK & FILTER ---
+        function getRemainingStock(id) {
+            const product = products.find(p => p.id === id);
+            const inCart = cart.find(item => item.id === id);
+            return product.stock - (inCart ? inCart.qty : 0);
+        }
+
+        function renderProducts() {
+            const list = document.getElementById('product-list');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+            list.innerHTML = "";
+
+            const filtered = products.filter(p => {
+                const matchCat = (currentCategory === 'ALL' || p.brand === currentCategory);
+                const matchSearch = p.name.toLowerCase().includes(searchVal) || 
+                                    p.desc.toLowerCase().includes(searchVal) ||
+                                    p.compatibility.toLowerCase().includes(searchVal);
+                return matchCat && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                list.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500">
+                    <i class="fa-solid fa-box-open text-4xl mb-3 block"></i>
+                    <p>Produk oli tidak ditemukan. Coba kata kunci lain atau hubungi CS.</p>
+                </div>`;
+                return;
+            }
+
+            list.innerHTML = filtered.map(p => {
+                const remaining = getRemainingStock(p.id);
+                const qty = Math.min(selectedQty[p.id] || 1, Math.max(remaining, 1));
+                selectedQty[p.id] = qty;
+                const outOfStock = remaining <= 0;
+                
+                // Fitur Indikator Warna Stok (merah/kuning/hijau dari versi 1)
+                const stockColor = remaining <= 5 ? 'text-red-400 bg-red-500/10 border-red-500/30' : 
+                                   remaining <= 15 ? 'text-amber-400 bg-amber-500/10 border-amber-500/30' : 
+                                   'text-green-400 bg-green-500/10 border-green-500/30';
+
+                return `
+                <div class="bg-slate-800/90 border border-slate-700/80 hover:border-orange-500 rounded-2xl overflow-hidden shadow-lg transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="bg-slate-900/60 p-4 border-b border-slate-700/60 flex justify-between items-center relative">
+                            <span class="bg-slate-800 text-orange-400 border border-slate-600 font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider">${p.brand}</span>
+                            <span class="text-[11px] font-bold px-2.5 py-1 rounded-full border ${stockColor}">
+                                <i class="fa-solid fa-cubes text-[10px]"></i> Stok: ${remaining} Dus
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <div class="font-extrabold text-white text-base mb-1 group-hover:text-orange-400 transition">${p.name}</div>
+                            <div class="text-xs text-slate-400 mb-3 flex items-center gap-1.5"><i class="fa-solid fa-motorcycle text-orange-400"></i> ${p.compatibility}</div>
+                            <div class="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">${formatRp(p.price)}</div>
+                            <div class="text-[11px] text-slate-400 mt-0.5">per ${p.unit}</div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 pt-0 space-y-3">
+                        <div class="flex items-center justify-between bg-slate-900/80 p-1.5 rounded-xl border border-slate-700">
+                            <button onclick="changeQty(${p.id}, -1)" class="qty-btn w-9 h-9 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold text-base transition" ${outOfStock ? 'disabled' : ''}>-</button>
+                            <span class="font-extrabold text-sm text-white" id="qty-${p.id}">${outOfStock ? 0 : qty} Dus</span>
+                            <button onclick="changeQty(${p.id}, 1)" class="qty-btn w-9 h-9 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold text-base transition" ${outOfStock ? 'disabled' : ''}>+</button>
+                        </div>
+
+                        <div class="grid grid-cols-5 gap-2">
+                            <button onclick="addToCart(${p.id})" class="col-span-4 ${outOfStock ? 'bg-slate-700 opacity-50 cursor-not-allowed' : 'bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500'} text-white py-2.5 rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5" ${outOfStock ? 'disabled' : ''}>
+                                <i class="fa-solid fa-cart-plus"></i> ${outOfStock ? 'Stok Habis' : '+ Keranjang'}
+                            </button>
+                            <button onclick="showProductDetail(${p.id})" class="col-span-1 bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white rounded-xl flex items-center justify-center transition" title="Lihat Deskripsi">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function setCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.className = "tab-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-full text-sm whitespace-nowrap border border-slate-700 transition";
+            });
+            btn.className = "tab-btn active bg-orange-600 text-white font-bold px-4 py-2 rounded-full text-sm whitespace-nowrap shadow-lg shadow-orange-600/20 transition";
+            renderProducts();
+        }
+
+        function filterProducts() { renderProducts(); }
+
+        function changeQty(id, delta) {
+            const remaining = getRemainingStock(id);
+            let qty = (selectedQty[id] || 1) + delta;
+            qty = Math.max(1, Math.min(qty, remaining));
+            selectedQty[id] = qty;
+            const el = document.getElementById('qty-' + id);
+            if (el) el.innerText = `${qty} Dus`;
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const qtyToAdd = selectedQty[id] || 1;
+            const remaining = getRemainingStock(id);
+            
+            if (remaining <= 0 || qtyToAdd > remaining) {
+                alert("⚠️ Stok gudang tidak mencukupi!"); return;
+            }
+
+            const existing = cart.find(item => item.id === id);
+            if (existing) existing.qty += qtyToAdd;
+            else cart.push({ ...product, qty: qtyToAdd });
+
+            selectedQty[id] = 1;
+            updateCartUI();
+            renderProducts();
+
+            // Efek animasi counter keranjang
+            const badge = document.getElementById('cart-count');
+            badge.classList.add('scale-125', 'bg-orange-500', 'text-white');
+            setTimeout(() => badge.classList.remove('scale-125', 'bg-orange-500', 'text-white'), 300);
+        }
+
+        // --- FITUR 12 & 13: DESKRIPSI & GARANSI MODAL ---
+        function showProductDetail(id) {
+            const p = products.find(item => item.id === id);
+            document.getElementById('detailModalBody').innerHTML = `
+                <div class="text-center mb-5">
+                    <div class="w-16 h-16 bg-orange-500/10 text-orange-400 rounded-2xl flex items-center justify-center mx-auto text-3xl mb-3 border border-orange-500/20">
+                        <i class="fa-solid fa-oil-can"></i>
+                    </div>
+                    <span class="bg-slate-800 text-orange-400 border border-slate-700 text-xs font-bold px-3 py-1 rounded-full">${p.brand} AUTHORIZED</span>
+                    <h3 class="text-lg font-black text-white mt-2">${p.name}</h3>
+                </div>
+                <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/80 mb-4 text-xs text-slate-300 leading-relaxed">
+                    ${p.desc}
+                </div>
+                <div class="grid grid-cols-2 gap-3 text-xs mb-5">
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <strong class="text-slate-400 block mb-0.5"><i class="fa-solid fa-box text-orange-400"></i> Kemasan:</strong>
+                        <span class="text-white font-medium">${p.unit}</span>
+                    </div>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <strong class="text-slate-400 block mb-0.5"><i class="fa-solid fa-cubes text-green-400"></i> Stok Gudang:</strong>
+                        <span class="text-green-400 font-bold">${p.stock} Dus</span>
+                    </div>
+                </div>
+                <div class="bg-amber-500/10 border border-amber-500/30 p-4 rounded-2xl text-amber-300 text-xs flex items-center gap-3.5">
+                    <i class="fa-solid fa-shield-halved text-3xl text-amber-400 shrink-0"></i>
+                    <div>
+                        <strong class="text-white text-sm block mb-0.5">Jaminan Garansi 100% Asli</strong>
+                        Garansi uang kembali sepenuhnya jika terbukti oli palsu atau tidak sesuai spesifikasi pabrikan!
+                    </div>
+                </div>
+            `;
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        // --- MANAJEMEN KERANJANG & NAVIGASI VIEW ---
+        function updateCartUI() {
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-count').innerText = totalItems;
+
+            const container = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                container.innerHTML = `<div class="text-center py-12 text-slate-500">
+                    <i class="fa-solid fa-cart-arrow-down text-4xl mb-3 block"></i>
+                    <p>Keranjang belanja bengkel Anda masih kosong.</p>
+                </div>`;
+                document.getElementById('cart-total-dus').innerText = '0 Dus';
+                document.getElementById('cart-total').innerText = 'Rp 0';
+                return;
+            }
+
+            let totalHarga = 0;
+            container.innerHTML = cart.map(item => {
+                const subtotal = item.price * item.qty;
+                totalHarga += subtotal;
+                return `
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-slate-900/80 rounded-xl border border-slate-700 gap-3">
+                    <div>
+                        <div class="font-bold text-white text-sm sm:text-base">${item.name}</div>
+                        <div class="text-xs text-slate-400 mt-0.5">Rp ${item.price.toLocaleString('id-ID')} / Dus</div>
+                    </div>
+                    <div class="flex items-center justify-between w-full sm:w-auto gap-4">
+                        <div class="flex items-center bg-slate-800 p-1 rounded-lg border border-slate-700">
+                            <button onclick="updateCartQty(${item.id}, -1)" class="w-8 h-8 rounded bg-slate-700 hover:bg-slate-600 font-bold text-white">-</button>
+                            <span class="w-10 text-center font-bold text-sm text-white">${item.qty}</span>
+                            <button onclick="updateCartQty(${item.id}, 1)" class="w-8 h-8 rounded bg-slate-700 hover:bg-slate-600 font-bold text-white">+</button>
+                        </div>
+                        <div class="font-black text-orange-400 text-base text-right min-w-[120px]">${formatRp(subtotal)}</div>
+                    </div>
+                </div>`;
+            }).join('');
+
+            document.getElementById('cart-total-dus').innerText = `${totalItems} Dus`;
+            document.getElementById('cart-total').innerText = formatRp(totalHarga);
+        }
+
+        function updateCartQty(id, change) {
+            const item = cart.find(i => i.id === id);
+            const product = products.find(p => p.id === id);
+            if (!item) return;
+
+            const newQty = item.qty + change;
+            if (newQty > product.stock) {
+                alert(`⚠️ Maaf, stok maksimal untuk produk ini adalah ${product.stock} Dus.`); return;
+            }
+            if (newQty <= 0) {
+                cart = cart.filter(i => i.id !== id);
+            } else {
+                item.qty = newQty;
+            }
+            updateCartUI();
+            renderProducts();
+        }
+
+        function showView(viewId) {
+            if (trackingInterval) clearInterval(trackingInterval);
+            ['home-view', 'cart-view', 'checkout-view', 'success-view'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById(viewId).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToCheckout() {
+            if (cart.length === 0) { alert("⚠️ Pilih oli terlebih dahulu sebelum checkout!"); return; }
+            if (!biodata.bengkel) {
+                alert("⚠️ Harap lengkapi biodata bengkel Anda untuk kalkulasi ongkos kirim.");
+                showWelcomeModal(); return;
+            }
+            calculateFinalCheckout();
+            showView('checkout-view');
+        }
+
+        // --- KALKULASI CHECKOUT & JARAK (Fitur 11 & 14) ---
+        function calculateFinalCheckout() {
+            const totalDus = cart.reduce((a, b) => a + b.qty, 0);
+            const totalBarang = cart.reduce((a, b) => a + (b.price * b.qty), 0);
+            const jarak = biodata.jarak || 5;
+            
+            // Aturan Ongkir: Rp 4.000/km. Min order 2 dus. Free Delivery min 5 dus!
+            let ongkir = 0;
+            let strOngkir = "";
+            const freeBadge = document.getElementById('chk-free-badge');
+
+            if (totalDus >= 5) {
+                ongkir = 0;
+                strOngkir = `<span class="text-green-400 font-extrabold">GRATIS (Free Delivery 🎉)</span>`;
+                freeBadge.classList.remove('hidden');
+            } else {
+                freeBadge.classList.add('hidden');
+                ongkir = jarak * 4000;
+                if (totalDus < 2) {
+                    strOngkir = `<span class="text-red-400 font-bold">Rp ${ongkir.toLocaleString('id-ID')}</span><br><span class="text-[10px] text-red-400">*Min. order standar 2 dus!</span>`;
+                } else {
+                    strOngkir = `<span class="text-white font-bold">Rp ${ongkir.toLocaleString('id-ID')}</span> <span class="text-xs text-slate-400">(${jarak} km)</span>`;
+                }
+            }
+
+            const totalBayar = totalBarang + ongkir;
+
+            // Render ke UI
+            document.getElementById('chk-nama').innerText = biodata.nama || '-';
+            document.getElementById('chk-bengkel').innerText = biodata.bengkel || '-';
+            document.getElementById('chk-hp').innerText = biodata.hp || '-';
+            document.getElementById('chk-alamat').innerText = biodata.alamat || '-';
+            document.getElementById('chk-jarak').innerText = `${jarak} km`;
+            
+            document.getElementById('chk-total-dus').innerText = `${totalDus} Dus`;
+            document.getElementById('chk-harga-barang').innerText = formatRp(totalBarang);
+            document.getElementById('chk-box-ongkir').innerHTML = strOngkir;
+            document.getElementById('chk-total-bayar').innerText = formatRp(totalBayar);
+        }
+
+        function updatePaymentDesc() { /* Terpicu saat opsi radio berubah */ }
+
+        // --- KALKULASI ETA TANGGAL ---
+        function calcEtaDate(shippingValue) {
+            const info = shippingEta[shippingValue] || { min: 1, max: 2 };
+            const today = new Date();
+            const minD = new Date(today); minD.setDate(today.getDate() + info.min);
+            const maxD = new Date(today); maxD.setDate(today.getDate() + info.max);
+            const opts = { day: 'numeric', month: 'short' };
+            if (info.min === info.max) return maxD.toLocaleDateString('id-ID', opts);
+            return `${minD.toLocaleDateString('id-ID', opts)} - ${maxD.toLocaleDateString('id-ID', opts)}`;
+        }
+
+        // --- PROSES PESANAN & LIVE TRACKING SIMULATION (Gabungan Versi 1 & 2) ---
+        function processOrder() {
+            const totalDus = cart.reduce((a, b) => a + b.qty, 0);
+            if (totalDus < 2 && !confirm("⚠️ Order Anda kurang dari rekomendasi minimal (2 Dus). Tetap lanjutkan?")) return;
+
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            const shippingMethod = document.querySelector('input[name="shipping"]:checked').value;
+            const totalBarang = cart.reduce((a, b) => a + (b.price * b.qty), 0);
+            const ongkir = (totalDus >= 5) ? 0 : (biodata.jarak * 4000);
+            const totalBayar = totalBarang + ongkir;
+            const orderId = '#LBRK-' + Math.floor(100000 + Math.random() * 900000);
+            const etaStr = calcEtaDate(shippingMethod);
+
+            // Simpan Data Pesanan
+            let itemTexts = "";
+            cart.forEach(i => { itemTexts += `- ${i.name} (${i.qty} Dus)\n`; });
+
+            latestOrder = {
+                id: orderId,
+                date: new Date().toLocaleDateString('id-ID'),
+                bengkel: biodata.bengkel,
+                pemilik: biodata.nama,
+                hp: biodata.hp,
+                alamat: biodata.alamat,
+                jarak: biodata.jarak,
+                itemsText: itemTexts,
+                totalDus: totalDus,
+                totalBayar: totalBayar,
+                kurir: shippingMethod,
+                payment: paymentMethod,
+                eta: etaStr,
+                status: "Diproses Gudang Resmi"
+            };
+
+            ordersHistory.unshift(latestOrder);
+            localStorage.setItem('lubrixa_orders', JSON.stringify(ordersHistory));
+
+            // Tampilkan ke UI Success
+            document.getElementById('succ-bengkel-name').innerText = biodata.bengkel;
+            document.getElementById('order-id').innerText = orderId;
+            document.getElementById('final-paid').innerText = formatRp(totalBayar);
+            document.getElementById('final-method').innerText = paymentMethod.split(' - ')[0];
+            document.getElementById('final-kurir').innerText = shippingMethod;
+            document.getElementById('eta-date').innerText = etaStr;
+
+            // Kosongkan keranjang
+            cart = [];
+            updateCartUI();
+            renderProducts();
+            showView('success-view');
+
+            // Jalankan Simulasi Pelacakan Real-Time (Dari Versi 1)
+            startTrackingSimulation();
+        }
+
+        function startTrackingSimulation() {
+            if (trackingInterval) clearInterval(trackingInterval);
+            const dots = document.querySelectorAll('#track-steps > div > div');
+            const labels = document.querySelectorAll('#track-steps > div > span');
+            const fill = document.getElementById('track-fill');
+            const statusText = document.getElementById('track-status');
+
+            // Reset awal
+            fill.style.width = '12%';
+            dots.forEach((d, i) => {
+                d.className = i === 0 ? "w-5 h-5 rounded-full bg-orange-500 track-active border-2 border-orange-300 shadow-md" : "w-5 h-5 rounded-full bg-slate-700 border-2 border-slate-500";
+                labels[i].className = i === 0 ? "text-[11px] mt-1.5 text-orange-300 font-bold leading-tight" : "text-[11px] mt-1.5 text-slate-500 leading-tight";
+            });
+
+            const stages = [
+                { pct: 12, text: "Pesanan diterima dan sedang diverifikasi oleh sistem Lubrixa.id." },
+                { pct: 40, text: "Oli resmi sedang dikemas dan dicek keasliannya di gudang distributor." },
+                { pct: 75, text: `Paket diserahkan ke kurir (${latestOrder ? latestOrder.kurir : 'Express'}) dan dalam perjalanan.` },
+                { pct: 100, text: "Oli tiba di bengkel Anda! Siap dicek dengan jaminan garansi 100% asli." }
+            ];
+
+            let cur = 0;
+            statusText.innerHTML = `<i class="fa-solid fa-circle-info text-orange-400"></i> <span>${stages[0].text}</span>`;
+
+            trackingInterval = setInterval(() => {
+                cur++;
+                if (cur >= stages.length) { clearInterval(trackingInterval); return; }
+                fill.style.width = stages[cur].pct + '%';
+                statusText.innerHTML = `<i class="fa-solid fa-circle-info text-orange-400"></i> <span>${stages[cur].text}</span>`;
+
+                dots[cur].className = "w-5 h-5 rounded-full bg-orange-500 track-active border-2 border-orange-300 shadow-md";
+                labels[cur].className = "text-[11px] mt-1.5 text-orange-300 font-bold leading-tight";
+                for (let j = 0; j < cur; j++) dots[j].classList.remove('track-active');
+            }, 2200);
+        }
+
+        // --- FITUR 9: KIRIM INVOICE KE WA CS ---
+        function sendToWhatsAppCS() {
+            if (!latestOrder) return;
+            const waText = `Halo CS Lubrixa.id (085600056789), saya ingin konfirmasi pesanan oli baru:\n\n` +
+                `*No. Pesanan:* ${latestOrder.id}\n` +
+                `*Nama Bengkel:* ${latestOrder.bengkel}\n` +
+                `*Penanggung Jawab:* ${latestOrder.pemilik}\n` +
+                `*No. HP/WA:* ${latestOrder.hp}\n` +
+                `*Alamat:* ${latestOrder.alamat} (${latestOrder.jarak} km)\n\n` +
+                `*Rincian Oli Dipesan:* \n${latestOrder.itemsText}\n` +
+                `*Kurir Delivery:* ${latestOrder.kurir} (${latestOrder.totalDus >= 5 ? 'Free Delivery 🎉' : 'Tarif Rp 4.000/km'})\n` +
+                `*Metode Bayar:* ${latestOrder.payment}\n` +
+                `*Total Tagihan:* *Rp ${latestOrder.totalBayar.toLocaleString('id-ID')}*\n` +
+                `*Estimasi Tiba:* ${latestOrder.eta}\n\n` +
+                `Mohon segera diproses pengiriman orisinalnya. Terima kasih!`;
+
+            window.open(`https://wa.me/6285600056789?text=${encodeURIComponent(waText)}`, '_blank');
+        }
+
+        // --- MODAL RIWAYAT PESANAN ---
+        function openOrderHistoryModal() {
+            const container = document.getElementById('orderHistoryContainer');
+            if (ordersHistory.length === 0) {
+                container.innerHTML = `<div class="text-center py-12 text-slate-500">
+                    <i class="fa-solid fa-clock-rotate-left text-4xl mb-3 block"></i>
+                    <p>Belum ada riwayat transaksi dari bengkel Anda.</p>
+                </div>`;
+            } else {
+                container.innerHTML = ordersHistory.map(ord => `
+                    <div class="bg-slate-800/90 p-4 rounded-2xl border border-slate-700 space-y-2">
+                        <div class="flex justify-between items-center border-b border-slate-700/80 pb-2">
+                            <div>
+                                <strong class="text-white text-sm block">${ord.id}</strong>
+                                <span class="text-[11px] text-slate-400">${ord.date} • ${ord.kurir}</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-bold px-2.5 py-0.5 rounded-full">${ord.status}</span>
+                                <strong class="text-orange-400 font-mono block text-sm mt-1">Rp ${ord.totalBayar.toLocaleString('id-ID')}</strong>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-300 font-mono whitespace-pre-line bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">${ord.itemsText}</div>
+                        <div class="flex justify-between items-center text-[11px] text-slate-400 pt-1">
+                            <span>Metode: <strong class="text-slate-300">${ord.payment.split(' - ')[0]}</strong></span>
+                            <span>Estimasi: <strong class="text-green-400 font-bold">${ord.eta}</strong></span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            document.getElementById('orderHistoryModal').classList.remove('hidden');
+        }
+
+        function resetApp() {
+            showView('home-view');
+        }
+    </script>
+</body>
+</html>
