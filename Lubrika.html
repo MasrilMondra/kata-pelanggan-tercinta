@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lubrixa.id - Marketplace Oli Resmi Khusus Bengkel</title>
+    <title>Lubrika.id - Marketplace Oli Resmi Khusus Bengkel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { font-family: 'Plus Jakarta Sans', sans-serif; }
-        /* Efek neon futuristik ringan dari versi Tailwind */
         .neon-border { border: 1px solid rgba(249, 115, 22, 0.5); box-shadow: 0 0 15px rgba(249, 115, 22, 0.25); }
         .neon-glow { box-shadow: 0 0 20px rgba(249, 115, 22, 0.4); }
         .qty-btn { user-select: none; }
@@ -20,7 +19,6 @@
         }
         .track-active { animation: trackPulse 1.6s infinite; }
         .track-fill { transition: width 0.6s ease; }
-        /* Custom Scrollbar untuk Tab Kategori */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -30,10 +28,10 @@
     <div class="bg-slate-950 text-xs py-2 px-4 border-b border-orange-500/40 flex flex-wrap justify-between items-center gap-2">
         <div class="flex items-center gap-4 flex-wrap text-slate-300">
             <span><i class="fa-solid fa-phone text-orange-400"></i> CS: <strong class="text-white">085600056789</strong></span>
-            <span><i class="fa-solid fa-envelope text-orange-400"></i> Email: <strong class="text-white">lubricaa.id membantu</strong></span>
+            <span><i class="fa-solid fa-envelope text-orange-400"></i> Email: <strong class="text-white">lubrika.id membantu</strong></span>
             <span class="hidden sm:inline"><i class="fa-solid fa-shield-halved text-green-400"></i> 100% Asli & Garansi Uang Kembali</span>
         </div>
-        <a href="https://wa.me/6285600056789?text=Halo%20CS%20Lubrixa.id,%20saya%20ingin%20berkonsultasi%20pesanan%20oli%20bengkel" target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold px-3 py-1 rounded-full flex items-center gap-1.5 transition transform hover:scale-105">
+        <a href="https://wa.me/6285600056789?text=Halo%20CS%20Lubrika.id,%20saya%20ingin%20berkonsultasi%20pesanan%20oli%20bengkel" target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold px-3 py-1 rounded-full flex items-center gap-1.5 transition transform hover:scale-105">
             <i class="fa-brands fa-whatsapp text-sm"></i> Chat WA CS (085600056789)
         </a>
     </div>
@@ -41,15 +39,13 @@
     <header class="bg-slate-950/90 backdrop-blur sticky top-0 z-40 border-b border-slate-800 p-4 shadow-xl">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3 cursor-pointer w-full md:w-auto justify-between md:justify-start" onclick="showView('home-view')">
-                <div class="flex items-center gap-2">
-                    <div class="bg-gradient-to-br from-orange-500 to-amber-600 text-white font-black text-xl px-3 py-1.5 rounded-xl shadow-lg shadow-orange-500/20">
-                        <i class="fa-solid fa-oil-can"></i> LX
-                    </div>
+                <div class="flex items-center gap-3">
+                    <img src="lubrika.id_3.jpg" alt="Logo Lubrika.id" class="h-11 w-auto object-contain rounded-xl shadow-md border border-orange-500/30">
                     <div>
                         <div class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-orange-400 tracking-tight">
-                            Lubrixa<span class="text-orange-500">.id</span>
+                            Lubrika<span class="text-orange-500">.id</span>
                         </div>
-                        <div class="text-[10px] text-orange-400/80 font-bold uppercase tracking-widest -mt-1">Direct from Brands</div>
+                        <div class="text-[10px] text-orange-400/80 font-bold uppercase tracking-widest -mt-1">100% Asli, 0% Ragu</div>
                     </div>
                 </div>
                 <button onclick="showWelcomeModal()" class="md:hidden bg-slate-800 border border-slate-700 text-orange-400 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
@@ -123,8 +119,7 @@
                 </button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="product-list">
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="product-list"></div>
         </div>
 
         <div id="cart-view" class="hidden">
@@ -137,8 +132,7 @@
             </div>
 
             <div class="bg-slate-800/90 rounded-2xl p-6 border border-slate-700 shadow-2xl">
-                <div id="cart-items" class="space-y-4 mb-6">
-                    </div>
+                <div id="cart-items" class="space-y-4 mb-6"></div>
                 
                 <div class="border-t border-slate-700 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <div>
@@ -217,10 +211,10 @@
                         </h3>
                         <div class="space-y-3" id="payment-options">
                             <label class="flex items-start p-3.5 bg-slate-900/60 border border-slate-700 rounded-xl cursor-pointer hover:border-orange-500 transition">
-                                <input type="radio" name="payment" value="Transfer Rekening BCA - 6470371470 (a.n. Lubrixa ID)" checked onchange="updatePaymentDesc()" class="mr-3.5 mt-1 accent-orange-500 w-4 h-4">
+                                <input type="radio" name="payment" value="Transfer Rekening BCA - 6470371470 (a.n. Lubrika Indonesia)" checked onchange="updatePaymentDesc()" class="mr-3.5 mt-1 accent-orange-500 w-4 h-4">
                                 <div class="flex-1">
                                     <div class="font-bold text-white text-sm">Transfer Rekening BCA</div>
-                                    <div class="text-xs font-mono text-orange-300 mt-0.5">No. Rek: 6470371470 (a.n. Lubrixa Indonesia)</div>
+                                    <div class="text-xs font-mono text-orange-300 mt-0.5">No. Rek: 6470371470 (a.n. Lubrika Indonesia)</div>
                                     <div class="text-[11px] text-slate-400 mt-1">Verifikasi manual via bukti transfer WhatsApp CS.</div>
                                 </div>
                             </label>
@@ -354,8 +348,8 @@
     <div id="welcomeModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative animate-fade-in">
             <div class="text-center mb-6">
-                <div class="inline-flex items-center gap-2 bg-slate-800 border border-slate-700 px-4 py-2 rounded-2xl text-xl font-black text-white mb-3 shadow-lg">
-                    <i class="fa-solid fa-oil-can text-orange-500"></i> Lubrixa<span class="text-orange-500">.id</span>
+                <div class="inline-flex items-center gap-3 bg-slate-800 border border-slate-700 px-4 py-2 rounded-2xl text-xl font-black text-white mb-3 shadow-lg">
+                    <img src="lubrika.id_3.jpg" alt="Logo" class="h-8 w-auto rounded-lg"> Lubrika<span class="text-orange-500">.id</span>
                 </div>
                 <h3 class="text-lg font-black text-white">Selamat Datang di Marketplace Bengkel</h3>
                 <p class="text-xs text-slate-400 mt-1">Lengkapi biodata bengkel Anda untuk kemudahan pesanan real-time & estimasi pengiriman akurat.</p>
@@ -379,7 +373,7 @@
                     <input type="text" id="bioAlamat" required placeholder="Jl. Raya Solo - Madiun Km 5, Madiun, Jawa Timur" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-orange-500 outline-none">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-300 mb-1"><i class="fa-solid fa-route text-orange-400"></i> Estimasi Jarak dari Gudang Lubrixa.id (in KM):</label>
+                    <label class="block text-xs font-bold text-slate-300 mb-1"><i class="fa-solid fa-route text-orange-400"></i> Estimasi Jarak dari Gudang Lubrika.id (in KM):</label>
                     <input type="number" id="bioJarak" required min="1" value="10" placeholder="10" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-orange-500 outline-none">
                     <p class="text-[10px] text-slate-400 mt-1">*Tarif kurir Rp 4.000/km (Min. beli 2 dus). Gratis ongkir jika beli ≥ 5 dus.</p>
                 </div>
@@ -409,7 +403,6 @@
     </div>
 
     <script>
-        // --- DATABASE 8 PRODUK ENTERPRISE (Deduplikasi dari versi 1 & 2) ---
         const products = [
             {
                 id: 1, name: "AHM Oil MPX-2 10W-30 MB (Matic)", brand: "AHM", price: 950000, stock: 45, unit: "Dus (24 Botol @ 0.8L)", compatibility: "Motor Matic Honda",
@@ -445,7 +438,6 @@
             }
         ];
 
-        // Estimasi waktu tiba untuk kalkulasi ETA (Gabungan dari versi 1)
         const shippingEta = {
             "Kurir Lubrika Express": { min: 0, max: 1, label: "12 - 24 Jam (Prioritas)" },
             "TIKI Reguler / Trucking": { min: 1, max: 2, label: "1 - 2 Hari" },
@@ -453,21 +445,18 @@
             "Id Express Cargo": { min: 2, max: 3, label: "2 - 3 Hari" }
         };
 
-        // --- STATE APLIKASI ---
         let cart = [];
-        let selectedQty = {}; // Qty sementara sebelum masuk keranjang
+        let selectedQty = {};
         let currentCategory = 'ALL';
         let biodata = { nama: "", hp: "", bengkel: "", alamat: "", jarak: 10 };
         let ordersHistory = [];
-        let latestOrder = null; // Menyimpan pesanan terakhir untuk tombol WA invoice
+        let latestOrder = null;
         let trackingInterval = null;
 
-        // Format Uang Rupiah
         const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
 
-        // Inisialisasi Saat Load
         window.onload = () => {
-            const savedBio = localStorage.getItem('lubrixa_bio');
+            const savedBio = localStorage.getItem('lubrika_bio');
             if (savedBio) {
                 biodata = JSON.parse(savedBio);
                 updateBengkelDisplay();
@@ -475,7 +464,7 @@
                 showWelcomeModal();
             }
 
-            const savedOrders = localStorage.getItem('lubrixa_orders');
+            const savedOrders = localStorage.getItem('lubrika_orders');
             if (savedOrders) ordersHistory = JSON.parse(savedOrders);
 
             products.forEach(p => { selectedQty[p.id] = 1; });
@@ -483,7 +472,6 @@
             updateCartUI();
         };
 
-        // --- MANAJEMEN BIODATA (Fitur 10) ---
         function showWelcomeModal() {
             if (biodata.nama) {
                 document.getElementById('bioNama').value = biodata.nama;
@@ -504,7 +492,7 @@
                 alamat: document.getElementById('bioAlamat').value,
                 jarak: parseInt(document.getElementById('bioJarak').value) || 5
             };
-            localStorage.setItem('lubrixa_bio', JSON.stringify(biodata));
+            localStorage.setItem('lubrika_bio', JSON.stringify(biodata));
             updateBengkelDisplay();
             closeModal('welcomeModal');
             alert(`✅ Selamat! Biodata '${biodata.bengkel}' berhasil disimpan.`);
@@ -523,7 +511,6 @@
             document.getElementById(id).classList.add('hidden');
         }
 
-        // --- RENDER PRODUK & FILTER ---
         function getRemainingStock(id) {
             const product = products.find(p => p.id === id);
             const inCart = cart.find(item => item.id === id);
@@ -557,7 +544,6 @@
                 selectedQty[p.id] = qty;
                 const outOfStock = remaining <= 0;
                 
-                // Fitur Indikator Warna Stok (merah/kuning/hijau dari versi 1)
                 const stockColor = remaining <= 5 ? 'text-red-400 bg-red-500/10 border-red-500/30' : 
                                    remaining <= 15 ? 'text-amber-400 bg-amber-500/10 border-amber-500/30' : 
                                    'text-green-400 bg-green-500/10 border-green-500/30';
@@ -636,13 +622,11 @@
             updateCartUI();
             renderProducts();
 
-            // Efek animasi counter keranjang
             const badge = document.getElementById('cart-count');
             badge.classList.add('scale-125', 'bg-orange-500', 'text-white');
             setTimeout(() => badge.classList.remove('scale-125', 'bg-orange-500', 'text-white'), 300);
         }
 
-        // --- FITUR 12 & 13: DESKRIPSI & GARANSI MODAL ---
         function showProductDetail(id) {
             const p = products.find(item => item.id === id);
             document.getElementById('detailModalBody').innerHTML = `
@@ -677,7 +661,6 @@
             document.getElementById('detailModal').classList.remove('hidden');
         }
 
-        // --- MANAJEMEN KERANJANG & NAVIGASI VIEW ---
         function updateCartUI() {
             const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
             document.getElementById('cart-count').innerText = totalItems;
@@ -755,13 +738,11 @@
             showView('checkout-view');
         }
 
-        // --- KALKULASI CHECKOUT & JARAK (Fitur 11 & 14) ---
         function calculateFinalCheckout() {
             const totalDus = cart.reduce((a, b) => a + b.qty, 0);
             const totalBarang = cart.reduce((a, b) => a + (b.price * b.qty), 0);
             const jarak = biodata.jarak || 5;
             
-            // Aturan Ongkir: Rp 4.000/km. Min order 2 dus. Free Delivery min 5 dus!
             let ongkir = 0;
             let strOngkir = "";
             const freeBadge = document.getElementById('chk-free-badge');
@@ -782,7 +763,6 @@
 
             const totalBayar = totalBarang + ongkir;
 
-            // Render ke UI
             document.getElementById('chk-nama').innerText = biodata.nama || '-';
             document.getElementById('chk-bengkel').innerText = biodata.bengkel || '-';
             document.getElementById('chk-hp').innerText = biodata.hp || '-';
@@ -795,9 +775,8 @@
             document.getElementById('chk-total-bayar').innerText = formatRp(totalBayar);
         }
 
-        function updatePaymentDesc() { /* Terpicu saat opsi radio berubah */ }
+        function updatePaymentDesc() {}
 
-        // --- KALKULASI ETA TANGGAL ---
         function calcEtaDate(shippingValue) {
             const info = shippingEta[shippingValue] || { min: 1, max: 2 };
             const today = new Date();
@@ -808,7 +787,6 @@
             return `${minD.toLocaleDateString('id-ID', opts)} - ${maxD.toLocaleDateString('id-ID', opts)}`;
         }
 
-        // --- PROSES PESANAN & LIVE TRACKING SIMULATION (Gabungan Versi 1 & 2) ---
         function processOrder() {
             const totalDus = cart.reduce((a, b) => a + b.qty, 0);
             if (totalDus < 2 && !confirm("⚠️ Order Anda kurang dari rekomendasi minimal (2 Dus). Tetap lanjutkan?")) return;
@@ -821,7 +799,6 @@
             const orderId = '#LBRK-' + Math.floor(100000 + Math.random() * 900000);
             const etaStr = calcEtaDate(shippingMethod);
 
-            // Simpan Data Pesanan
             let itemTexts = "";
             cart.forEach(i => { itemTexts += `- ${i.name} (${i.qty} Dus)\n`; });
 
@@ -843,9 +820,8 @@
             };
 
             ordersHistory.unshift(latestOrder);
-            localStorage.setItem('lubrixa_orders', JSON.stringify(ordersHistory));
+            localStorage.setItem('lubrika_orders', JSON.stringify(ordersHistory));
 
-            // Tampilkan ke UI Success
             document.getElementById('succ-bengkel-name').innerText = biodata.bengkel;
             document.getElementById('order-id').innerText = orderId;
             document.getElementById('final-paid').innerText = formatRp(totalBayar);
@@ -853,13 +829,11 @@
             document.getElementById('final-kurir').innerText = shippingMethod;
             document.getElementById('eta-date').innerText = etaStr;
 
-            // Kosongkan keranjang
             cart = [];
             updateCartUI();
             renderProducts();
             showView('success-view');
 
-            // Jalankan Simulasi Pelacakan Real-Time (Dari Versi 1)
             startTrackingSimulation();
         }
 
@@ -870,7 +844,6 @@
             const fill = document.getElementById('track-fill');
             const statusText = document.getElementById('track-status');
 
-            // Reset awal
             fill.style.width = '12%';
             dots.forEach((d, i) => {
                 d.className = i === 0 ? "w-5 h-5 rounded-full bg-orange-500 track-active border-2 border-orange-300 shadow-md" : "w-5 h-5 rounded-full bg-slate-700 border-2 border-slate-500";
@@ -878,7 +851,7 @@
             });
 
             const stages = [
-                { pct: 12, text: "Pesanan diterima dan sedang diverifikasi oleh sistem Lubrixa.id." },
+                { pct: 12, text: "Pesanan diterima dan sedang diverifikasi oleh sistem Lubrika.id." },
                 { pct: 40, text: "Oli resmi sedang dikemas dan dicek keasliannya di gudang distributor." },
                 { pct: 75, text: `Paket diserahkan ke kurir (${latestOrder ? latestOrder.kurir : 'Express'}) dan dalam perjalanan.` },
                 { pct: 100, text: "Oli tiba di bengkel Anda! Siap dicek dengan jaminan garansi 100% asli." }
@@ -899,10 +872,9 @@
             }, 2200);
         }
 
-        // --- FITUR 9: KIRIM INVOICE KE WA CS ---
         function sendToWhatsAppCS() {
             if (!latestOrder) return;
-            const waText = `Halo CS Lubrixa.id (085600056789), saya ingin konfirmasi pesanan oli baru:\n\n` +
+            const waText = `Halo CS Lubrika.id (085600056789), saya ingin konfirmasi pesanan oli baru:\n\n` +
                 `*No. Pesanan:* ${latestOrder.id}\n` +
                 `*Nama Bengkel:* ${latestOrder.bengkel}\n` +
                 `*Penanggung Jawab:* ${latestOrder.pemilik}\n` +
@@ -918,7 +890,6 @@
             window.open(`https://wa.me/6285600056789?text=${encodeURIComponent(waText)}`, '_blank');
         }
 
-        // --- MODAL RIWAYAT PESANAN ---
         function openOrderHistoryModal() {
             const container = document.getElementById('orderHistoryContainer');
             if (ordersHistory.length === 0) {
