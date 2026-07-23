@@ -36,38 +36,45 @@
         </a>
     </div>
 
-    <header class="bg-slate-950/90 backdrop-blur sticky top-0 z-40 border-b border-slate-800 p-4 shadow-xl">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3 cursor-pointer w-full md:w-auto justify-between md:justify-start" onclick="showView('home-view')">
-                <div class="flex items-center gap-3">
-                    <img src="lubrika.id_3.jpg" alt="Logo Lubrika.id" class="h-11 w-auto object-contain rounded-xl shadow-md border border-orange-500/30">
+    <header class="bg-slate-950/90 backdrop-blur sticky top-0 z-40 border-b border-slate-800 p-3 md:p-4 shadow-xl">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
+            
+            <!-- Baris Atas Logo & Menu Utama di Mobile -->
+            <div class="flex items-center justify-between w-full md:w-auto">
+                <div class="flex items-center gap-2.5 cursor-pointer" onclick="showView('home-view')">
+                    <img src="lubrika.id_3.jpg" alt="Logo Lubrika.id" class="h-9 md:h-11 w-auto object-contain rounded-xl shadow-md border border-orange-500/30">
                     <div>
-                        <div class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-orange-400 tracking-tight">
+                        <div class="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-orange-400 tracking-tight leading-none">
                             Lubrika<span class="text-orange-500">.id</span>
                         </div>
-                        <div class="text-[10px] text-orange-400/80 font-bold uppercase tracking-widest -mt-1">100% Asli, 0% Ragu</div>
+                        <div class="text-[9px] md:text-[10px] text-orange-400/80 font-bold uppercase tracking-widest mt-0.5">100% Asli, 0% Ragu</div>
                     </div>
                 </div>
-                <div class="flex items-center gap-2 md:hidden">
-                    <button onclick="openAboutModal()" class="bg-slate-800 border border-slate-700 text-orange-400 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1">
-                        <i class="fa-solid fa-building-shield"></i> Tentang Kami
+
+                <!-- Tombol Navigasi Mobile -->
+                <div class="flex items-center gap-1.5 md:hidden">
+                    <button onclick="openAboutModal()" class="bg-slate-800 border border-slate-700 text-orange-400 px-2.5 py-1.5 rounded-lg text-[11px] font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-building-shield"></i> Info
                     </button>
-                    <button onclick="showWelcomeModal()" class="bg-slate-800 border border-slate-700 text-orange-400 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1">
-                        <i class="fa-solid fa-warehouse"></i> <span id="mobileBengkelName">Bengkel Anda</span>
+                    <button onclick="showWelcomeModal()" class="bg-slate-800 border border-slate-700 text-orange-400 px-2.5 py-1.5 rounded-lg text-[11px] font-bold flex items-center gap-1">
+                        <span id="mobileBengkelName" class="truncate max-w-[90px]">Bengkel</span>
+                    </button>
+                    <button onclick="showView('cart-view')" class="bg-gradient-to-r from-orange-600 to-orange-500 text-white px-3 py-1.5 rounded-lg font-bold text-xs flex items-center gap-1 shadow-md">
+                        <i class="fa-solid fa-cart-shopping"></i> <span id="cart-count-mob">0</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Kolom Pencarian Diperkecil (max-w-xs) -->
+            <!-- Kolom Pencarian yang Aman & Proporsional -->
             <div class="relative w-full md:max-w-xs">
                 <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
                 <input type="text" id="searchInput" placeholder="Cari oli (AHM, Yamalube, Enduro)..." 
                     onkeyup="filterProducts()" 
-                    class="w-full bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-full py-2 pl-9 pr-4 text-xs text-white placeholder-slate-500 outline-none transition shadow-inner">
+                    class="w-full bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-full py-1.5 md:py-2 pl-9 pr-4 text-xs text-white placeholder-slate-500 outline-none transition shadow-inner">
             </div>
 
+            <!-- Tombol Navigasi Desktop -->
             <div class="hidden md:flex items-center gap-2.5">
-                <!-- Tombol Tentang Kami di Samping -->
                 <button onclick="openAboutModal()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-orange-400 px-3.5 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 transition">
                     <i class="fa-solid fa-building-shield"></i> Tentang Kami
                 </button>
@@ -356,18 +363,16 @@
 
     </main>
 
-    <!-- Modal Tentang Kami & Super Team -->
+    <!-- Modal Tentang Kami & Super Team dengan Logo Lubrika.id -->
     <div id="aboutModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal('aboutModal')" class="absolute top-4 right-4 bg-slate-800 text-slate-400 hover:text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">&times;</button>
             
             <div class="space-y-6">
-                <!-- Info Tentang Kami -->
+                <!-- Info Tentang Kami dengan Logo Perusahaan -->
                 <div class="space-y-3">
                     <div class="flex items-center gap-3">
-                        <div class="bg-orange-500/20 p-2.5 rounded-xl border border-orange-500/30 text-orange-400">
-                            <i class="fa-solid fa-building-shield text-xl"></i>
-                        </div>
+                        <img src="lubrika.id_3.jpg" alt="Logo Lubrika" class="h-12 w-auto object-contain rounded-xl border border-orange-500/30 shadow-md">
                         <div>
                             <h3 class="text-xl font-black text-white">Tentang Lubrika.id</h3>
                             <p class="text-xs text-orange-400 font-bold uppercase tracking-wider">Platform Resmi Distributor & Marketplace Bengkel</p>
@@ -403,8 +408,8 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <!-- CEO -->
                         <div class="bg-slate-800/90 p-4 rounded-2xl border border-slate-700 flex flex-col items-center sm:items-start text-center sm:text-left gap-3">
-                            <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 shadow-md border-2 border-orange-500/40">
-                                <img src="masril-ceo.jpg" alt="Founder CEO - Masril Novies Mondra" class="w-full h-full object-cover">
+                            <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 shadow-md border-2 border-orange-500/40 bg-slate-900 flex items-center justify-center">
+                                <img src="masril-ceo.jpg" alt="Founder CEO" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23f97316\' stroke-width=\'2\'><path d=\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\'></path><circle cx=\'12\' cy=\'7\' r=\'4\'></circle></svg>';">
                             </div>
                             <div>
                                 <h5 class="font-black text-white text-sm">Masril Novies Mondra, S.M., M.IST</h5>
@@ -416,8 +421,8 @@
                         </div>
                         <!-- CTO -->
                         <div class="bg-slate-800/90 p-4 rounded-2xl border border-slate-700 flex flex-col items-center sm:items-start text-center sm:text-left gap-3">
-                            <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 shadow-md border-2 border-amber-500/40">
-                                <img src="murtadha-cto.jpeg" alt="Founder CTO - Murtadha" class="w-full h-full object-cover">
+                            <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 shadow-md border-2 border-amber-500/40 bg-slate-900 flex items-center justify-center">
+                                <img src="murtadha-cto.jpeg" alt="Founder CTO" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23f59e0b\' stroke-width=\'2\'><path d=\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\'></path><circle cx=\'12\' cy=\'7\' r=\'4\'></circle></svg>';">
                             </div>
                             <div>
                                 <h5 class="font-black text-white text-sm">Murtadha. J, SST., M.IST</h5>
@@ -433,6 +438,7 @@
         </div>
     </div>
 
+    <!-- Modal Biodata Bengkel (Tanpa Duplikasi Icon Rumah) -->
     <div id="welcomeModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative animate-fade-in">
             <div class="text-center mb-6">
@@ -715,8 +721,15 @@
             renderProducts();
 
             const badge = document.getElementById('cart-count');
-            badge.classList.add('scale-125', 'bg-orange-500', 'text-white');
-            setTimeout(() => badge.classList.remove('scale-125', 'bg-orange-500', 'text-white'), 300);
+            const badgeMob = document.getElementById('cart-count-mob');
+            if(badge) {
+                badge.classList.add('scale-125', 'bg-orange-500', 'text-white');
+                setTimeout(() => badge.classList.remove('scale-125', 'bg-orange-500', 'text-white'), 300);
+            }
+            if(badgeMob) {
+                badgeMob.classList.add('scale-125');
+                setTimeout(() => badgeMob.classList.remove('scale-125'), 300);
+            }
         }
 
         function showProductDetail(id) {
@@ -756,6 +769,7 @@
         function updateCartUI() {
             const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
             document.getElementById('cart-count').innerText = totalItems;
+            document.getElementById('cart-count-mob').innerText = totalItems;
 
             const container = document.getElementById('cart-items');
             if (cart.length === 0) {
