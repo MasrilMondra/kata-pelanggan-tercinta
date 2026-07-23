@@ -48,25 +48,35 @@
                         <div class="text-[10px] text-orange-400/80 font-bold uppercase tracking-widest -mt-1">100% Asli, 0% Ragu</div>
                     </div>
                 </div>
-                <button onclick="showWelcomeModal()" class="md:hidden bg-slate-800 border border-slate-700 text-orange-400 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
-                    <i class="fa-solid fa-warehouse"></i> <span id="mobileBengkelName">Bengkel Anda</span>
-                </button>
+                <div class="flex items-center gap-2 md:hidden">
+                    <button onclick="openAboutModal()" class="bg-slate-800 border border-slate-700 text-orange-400 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-building-shield"></i> Tentang Kami
+                    </button>
+                    <button onclick="showWelcomeModal()" class="bg-slate-800 border border-slate-700 text-orange-400 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-warehouse"></i> <span id="mobileBengkelName">Bengkel Anda</span>
+                    </button>
+                </div>
             </div>
 
-            <div class="relative w-full md:max-w-md">
-                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500"></i>
-                <input type="text" id="searchInput" placeholder="Cari oli (AHM, Yamalube, Enduro, Motul, Matic)..." 
+            <!-- Kolom Pencarian Diperkecil (max-w-xs) -->
+            <div class="relative w-full md:max-w-xs">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                <input type="text" id="searchInput" placeholder="Cari oli (AHM, Yamalube, Enduro)..." 
                     onkeyup="filterProducts()" 
-                    class="w-full bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-full py-2 pl-10 pr-4 text-sm text-white placeholder-slate-500 outline-none transition shadow-inner">
+                    class="w-full bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-full py-2 pl-9 pr-4 text-xs text-white placeholder-slate-500 outline-none transition shadow-inner">
             </div>
 
-            <div class="hidden md:flex items-center gap-3">
-                <button onclick="showWelcomeModal()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-orange-400 px-3 py-2 rounded-full text-xs font-bold flex items-center gap-2 transition">
+            <div class="hidden md:flex items-center gap-2.5">
+                <!-- Tombol Tentang Kami di Samping -->
+                <button onclick="openAboutModal()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-orange-400 px-3.5 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-building-shield"></i> Tentang Kami
+                </button>
+                <button onclick="showWelcomeModal()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-orange-400 px-3.5 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 transition">
                     <i class="fa-solid fa-warehouse"></i> <span id="displayBengkelName">Bengkel Anda (Klik Isi Data)</span>
                 </button>
-                <button onclick="showView('cart-view')" class="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white px-5 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg shadow-orange-600/30 transition transform hover:-translate-y-0.5">
+                <button onclick="showView('cart-view')" class="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white px-4 py-2 rounded-full font-bold text-xs flex items-center gap-2 shadow-lg shadow-orange-600/30 transition transform hover:-translate-y-0.5">
                     <i class="fa-solid fa-cart-shopping"></i> Keranjang
-                    <span id="cart-count" class="bg-slate-950 text-orange-400 px-2 py-0.5 rounded-full text-xs font-black border border-orange-500/30">0</span>
+                    <span id="cart-count" class="bg-slate-950 text-orange-400 px-2 py-0.5 rounded-full text-[10px] font-black border border-orange-500/30">0</span>
                 </button>
             </div>
         </div>
@@ -104,81 +114,6 @@
                         <div class="bg-slate-900/80 border border-slate-700/80 p-3.5 rounded-xl flex items-center gap-3">
                             <i class="fa-solid fa-gift text-green-400 text-2xl"></i>
                             <div class="text-xs"><strong class="text-green-400 block text-sm">Free Delivery</strong> Gratis ongkir min. 5 dus</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bagian Tentang Kami (Profil Perusahaan) -->
-            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 mb-8 shadow-xl">
-                <div class="max-w-4xl mx-auto space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div class="bg-orange-500/20 p-2.5 rounded-xl border border-orange-500/30 text-orange-400">
-                            <i class="fa-solid fa-building-shield text-xl"></i>
-                        </div>
-                        <div>
-                            <h2 class="text-xl font-black text-white">Tentang Lubrika.id</h2>
-                            <p class="text-xs text-orange-400 font-bold uppercase tracking-wider">Platform Resmi Distributor & Marketplace Bengkel</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        <strong>Lubrika.id</strong> hadir sebagai solusi digital terpercaya yang menghubungkan bengkel-bengkel motor di berbagai daerah secara langsung dengan produsen dan brand oli resmi. Kami berkomitmen untuk memutus rantai pasok distribusi palsu, memberikan kepastian harga yang transparan (1 harga 1 provinsi), serta menjamin keaslian produk 100% demi menjaga kualitas mesin konsumen di bengkel Anda.
-                    </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 border-t border-slate-700/80">
-                        <div class="text-xs text-slate-400">
-                            <strong class="text-white block text-sm mb-0.5">🎯 Visi Kami</strong>
-                            Menjadi jaringan distribusi pasokan suku cadang dan pelumas terluar, termudah, dan terpercaya bagi seluruh bengkel di Indonesia.
-                        </div>
-                        <div class="text-xs text-slate-400">
-                            <strong class="text-white block text-sm mb-0.5">🚀 Misi Kami</strong>
-                            Mempermudah akses stok resmi 24 jam dengan pengiriman cepat dan sistem garansi keaslian mutlak.
-                        </div>
-                        <div class="text-xs text-slate-400">
-                            <strong class="text-white block text-sm mb-0.5">🛡️ Komitmen Kami</strong>
-                            100% produk original langsung dari pabrik utama dengan layanan dukungan pelanggan yang responsif.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Super Team (Leadership) -->
-            <div class="space-y-6 mb-8">
-                <div class="text-center max-w-xl mx-auto">
-                    <h2 class="text-xs font-bold text-orange-400 uppercase tracking-widest mb-1">Kepemimpinan & Pengalaman</h2>
-                    <h3 class="text-2xl font-black text-white">Super Team Di Balik Lubrika.id</h3>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                    <!-- CEO -->
-                    <div class="bg-slate-800/90 p-6 rounded-3xl border border-slate-700 hover:border-orange-500/50 flex flex-col sm:flex-row gap-5 items-center sm:items-start text-center sm:text-left transition shadow-xl group">
-                        <div class="w-24 h-24 rounded-2xl overflow-hidden shrink-0 shadow-lg border-2 border-orange-500/40 group-hover:scale-105 transition duration-300">
-                            <!-- Foto profil Founder & CEO: Masril Novies Mondra -->
-                            <img src="masril-ceo.jpg" alt="Founder CEO - Masril Novies Mondra" class="w-full h-full object-cover">
-                        </div>
-                        <div class="space-y-2">
-                            <div>
-                                <h4 class="font-black text-white text-lg group-hover:text-orange-400 transition">Masril Novies Mondra, S.M., M.IST</h4>
-                                <span class="text-xs font-bold text-orange-400 bg-orange-500/10 px-2.5 py-0.5 rounded-md border border-orange-500/20 inline-block mt-1">Founder - CEO</span>
-                            </div>
-                            <p class="text-xs text-slate-300 leading-relaxed">
-                                Memiliki lebih dari 18 tahun pengalaman profesional di industri ritel, FMCG, dan distribusi otomotif. Telah memimpin 12 cabang distribusi nasional dan membangun kemitraan strategis dengan 100+ supplier.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- CTO -->
-                    <div class="bg-slate-800/90 p-6 rounded-3xl border border-slate-700 hover:border-amber-500/50 flex flex-col sm:flex-row gap-5 items-center sm:items-start text-center sm:text-left transition shadow-xl group">
-                        <div class="w-24 h-24 rounded-2xl overflow-hidden shrink-0 shadow-lg border-2 border-amber-500/40 group-hover:scale-105 transition duration-300">
-                            <!-- Foto profil Founder & CTO: Murtadha J -->
-                            <img src="murtadha-cto.jpeg" alt="Founder CTO - Murtadha" class="w-full h-full object-cover">
-                        </div>
-                        <div class="space-y-2">
-                            <div>
-                                <h4 class="font-black text-white text-lg group-hover:text-amber-400 transition">Murtadha. J, SST., M.IST</h4>
-                                <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-md border border-amber-500/20 inline-block mt-1">Founder - CTO</span>
-                            </div>
-                            <p class="text-xs text-slate-300 leading-relaxed">
-                                Lulusan teknik komputer dengan pengalaman lebih dari satu dekade dalam merancang infrastruktur digital dan platform skalabel di berbagai industri, berfokus pada keandalan sistem dan kemudahan transaksi bengkel.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -421,6 +356,83 @@
 
     </main>
 
+    <!-- Modal Tentang Kami & Super Team -->
+    <div id="aboutModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('aboutModal')" class="absolute top-4 right-4 bg-slate-800 text-slate-400 hover:text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">&times;</button>
+            
+            <div class="space-y-6">
+                <!-- Info Tentang Kami -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-orange-500/20 p-2.5 rounded-xl border border-orange-500/30 text-orange-400">
+                            <i class="fa-solid fa-building-shield text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black text-white">Tentang Lubrika.id</h3>
+                            <p class="text-xs text-orange-400 font-bold uppercase tracking-wider">Platform Resmi Distributor & Marketplace Bengkel</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        <strong>Lubrika.id</strong> hadir sebagai solusi digital terpercaya yang menghubungkan bengkel-bengkel motor di berbagai daerah secara langsung dengan produsen dan brand oli resmi. Kami berkomitmen untuk memutus rantai pasok distribusi palsu, memberikan kepastian harga yang transparan (1 harga 1 provinsi), serta menjamin keaslian produk 100% demi menjaga kualitas mesin konsumen di bengkel Anda.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-300">
+                            <strong class="text-white block text-sm mb-1">🎯 Visi Kami</strong>
+                            Menjadi jaringan distribusi pasokan suku cadang dan pelumas terluar, termudah, dan terpercaya bagi seluruh bengkel di Indonesia.
+                        </div>
+                        <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-300">
+                            <strong class="text-white block text-sm mb-1">🚀 Misi Kami</strong>
+                            Mempermudah akses stok resmi 24 jam dengan pengiriman cepat dan sistem garansi keaslian mutlak.
+                        </div>
+                        <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700 text-xs text-slate-300">
+                            <strong class="text-white block text-sm mb-1">🛡️ Komitmen</strong>
+                            100% produk original langsung dari pabrik utama dengan layanan dukungan pelanggan yang responsif.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border-slate-800">
+
+                <!-- Super Team -->
+                <div class="space-y-4">
+                    <div class="text-center">
+                        <h4 class="text-xs font-bold text-orange-400 uppercase tracking-widest mb-0.5">Kepemimpinan & Pengalaman</h4>
+                        <h4 class="text-lg font-black text-white">Super Team Di Balik Lubrika.id</h4>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- CEO -->
+                        <div class="bg-slate-800/90 p-4 rounded-2xl border border-slate-700 flex flex-col items-center sm:items-start text-center sm:text-left gap-3">
+                            <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 shadow-md border-2 border-orange-500/40">
+                                <img src="masril-ceo.jpg" alt="Founder CEO - Masril Novies Mondra" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h5 class="font-black text-white text-sm">Masril Novies Mondra, S.M., M.IST</h5>
+                                <span class="text-[10px] font-bold text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20 inline-block my-1">Founder - CEO</span>
+                                <p class="text-[11px] text-slate-300 leading-relaxed">
+                                    Pengalaman 18+ tahun di industri ritel, FMCG, dan distribusi otomotif nasional.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- CTO -->
+                        <div class="bg-slate-800/90 p-4 rounded-2xl border border-slate-700 flex flex-col items-center sm:items-start text-center sm:text-left gap-3">
+                            <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 shadow-md border-2 border-amber-500/40">
+                                <img src="murtadha-cto.jpeg" alt="Founder CTO - Murtadha" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h5 class="font-black text-white text-sm">Murtadha. J, SST., M.IST</h5>
+                                <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 inline-block my-1">Founder - CTO</span>
+                                <p class="text-[11px] text-slate-300 leading-relaxed">
+                                    Pakar infrastruktur digital & platform transaksi handal berstandar tinggi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="welcomeModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative animate-fade-in">
             <div class="text-center mb-6">
@@ -557,6 +569,10 @@
                 document.getElementById('bioJarak').value = biodata.jarak;
             }
             document.getElementById('welcomeModal').classList.remove('hidden');
+        }
+
+        function openAboutModal() {
+            document.getElementById('aboutModal').classList.remove('hidden');
         }
 
         function saveBiodata(e) {
