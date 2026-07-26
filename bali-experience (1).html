@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bali Experience — Healing Journey Through the Island of Gods</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#132724;
+    --stone:#eaf6f3;
+    --stone-2:#dcefe9;
+    --charcoal:#0d3634;
+    --charcoal-2:#0a2b29;
+    --sunset:#0fa393;
+    --sunset-deep:#0c8477;
+    --paddy:#128a7a;
+    --paddy-deep:#0a4744;
+    --gold:#d7b268;
+    --cream:#f5fbf9;
+    --whatsapp:#25d366;
+    --whatsapp-deep:#1ebc5a;
+    --line: rgba(19,39,36,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Work Sans', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.08;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  em{font-style:italic;color:var(--sunset-deep);}
+  p{margin:0;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:'Work Sans',sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--sunset-deep);
+    font-weight:600;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow svg{width:16px;height:16px;flex-shrink:0;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;
+    cursor:pointer;border:1.5px solid transparent;text-decoration:none;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    font-family:'Work Sans',sans-serif;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--sunset);color:#fff;box-shadow:0 10px 24px -8px rgba(226,112,58,0.6);}
+  .btn-primary:hover{background:var(--sunset-deep);}
+  .btn-ghost{background:transparent;border-color:rgba(255,255,255,0.55);color:#fff;}
+  .btn-ghost:hover{background:rgba(255,255,255,0.12);}
+  .btn-dark{background:var(--charcoal);color:#fff;}
+  .btn-dark:hover{background:#000;}
+  .btn-whatsapp{background:var(--whatsapp);color:#fff;box-shadow:0 10px 24px -8px rgba(37,211,102,0.55);}
+  .btn-whatsapp:hover{background:var(--whatsapp-deep);}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,246,236,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1180px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:600;font-size:19px;}
+  .logo svg{width:26px;height:26px;}
+  .nav-actions{display:flex;align-items:center;gap:10px;}
+  .pill-toggle{
+    display:flex;background:var(--stone-2);border-radius:999px;padding:3px;font-size:13px;font-weight:600;
+  }
+  .pill-toggle button{
+    border:none;background:transparent;padding:7px 13px;border-radius:999px;cursor:pointer;color:var(--ink);
+    font-family:'Work Sans',sans-serif;font-weight:600;font-size:13px;
+  }
+  .pill-toggle button.active{background:var(--charcoal);color:#fff;}
+  .icon-btn{
+    width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:#fff;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+  }
+  .icon-btn svg{width:18px;height:18px;}
+
+  /* ---------- SHORTCUT BAR ---------- */
+  .shortcut-bar{
+    background:var(--charcoal-2);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    position:sticky;top:63px;z-index:49;
+  }
+  .shortcut-inner{
+    max-width:1180px;margin:0 auto;padding:10px 28px;
+    display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
+  }
+  .shortcut-inner::-webkit-scrollbar{display:none;}
+  .shortcut-item{
+    display:flex;align-items:center;gap:7px;flex-shrink:0;
+    padding:8px 15px;border-radius:999px;background:rgba(255,255,255,0.06);
+    color:rgba(245,251,249,0.88);font-size:13px;font-weight:600;
+    text-decoration:none;border:1px solid rgba(255,255,255,0.08);
+    cursor:pointer;font-family:'Work Sans',sans-serif;
+    transition:background .15s ease;
+  }
+  .shortcut-item:hover{background:rgba(255,255,255,0.14);}
+  .shortcut-item svg{width:16px;height:16px;flex-shrink:0;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:92vh;display:flex;align-items:flex-end;
+    background:linear-gradient(180deg, rgba(10,43,41,0.30) 0%, rgba(10,60,56,0.58) 55%, rgba(8,45,42,0.94) 100%),
+      url('https://commons.wikimedia.org/wiki/Special:FilePath/Bali%20%E2%80%93%20Rice%20terrace%20(2687336831).jpg?width=1600') center/cover no-repeat;
+    color:#fff;padding-top:120px;
+  }
+  .hero-inner{max-width:1180px;margin:0 auto;padding:0 28px 72px;width:100%;}
+  .hero .eyebrow{color:#f2c98f;}
+  .hero h1{font-size:clamp(38px,6vw,72px);color:#fff;max-width:800px;margin-top:18px;}
+  .hero p.lead{font-size:18px;max-width:560px;margin-top:20px;color:rgba(255,255,255,0.88);}
+  .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+  .hero-stats{display:flex;gap:34px;margin-top:56px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.22);padding-top:26px;}
+  .hero-stats div b{display:block;font-family:'Fraunces',serif;font-size:26px;font-weight:600;}
+  .hero-stats div span{font-size:12.5px;color:rgba(255,255,255,0.7);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(28px,4vw,44px);margin-top:14px;}
+  .section-head p{margin-top:16px;color:#5c5346;font-size:16.5px;}
+  .dark{background:var(--charcoal);color:var(--cream);}
+  .dark .section-head p{color:rgba(251,246,236,0.72);}
+  .dark h2{color:#fff;}
+  .paddy-bg{background:var(--paddy-deep);color:var(--cream);}
+  .paddy-bg h2{color:#fff;}
+  .paddy-bg .section-head p{color:rgba(251,246,236,0.78);}
+
+  /* canang divider */
+  .divider{display:flex;align-items:center;gap:14px;margin:0 0 18px;}
+  .divider svg{width:22px;height:22px;flex-shrink:0;}
+  .divider span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--gold);}
+
+  /* ---------- WHY HEALING ---------- */
+  .healing-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;}
+  .healing-card{background:var(--stone);border-radius:22px;padding:34px;border:1px solid var(--line);}
+  .healing-card + .healing-card{margin-top:18px;}
+  .healing-card h3{font-size:19px;margin-bottom:8px;}
+  .healing-card p{color:#5c5346;font-size:15px;}
+  .healing-num{font-family:'Fraunces',serif;font-style:italic;color:var(--sunset);font-size:15px;margin-bottom:6px;display:block;}
+
+  /* ---------- NATURE GRID ---------- */
+  .nature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;}
+  .nature-card{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;}
+  .nature-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .nature-card:hover img{transform:scale(1.06);}
+  .nature-card .overlay{
+    position:absolute;inset:0;background:linear-gradient(180deg, transparent 40%, rgba(20,17,13,0.88) 100%);
+    display:flex;align-items:flex-end;padding:18px;
+  }
+  .nature-card .overlay h4{color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:17px;}
+  .nature-card .overlay p{color:rgba(255,255,255,0.78);font-size:12.5px;margin-top:4px;}
+
+  /* ---------- DISTANCE ---------- */
+  .distance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .distance-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;}
+  .distance-card svg{width:30px;height:30px;color:var(--sunset);margin-bottom:14px;}
+  .distance-card h3{font-size:17px;margin-bottom:12px;}
+  .distance-row{display:flex;justify-content:space-between;font-size:14px;padding:9px 0;border-top:1px dashed var(--line);color:#5c5346;}
+  .distance-row b{color:var(--ink);font-weight:600;}
+
+  /* ---------- RESTO ---------- */
+  .resto-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+  .resto-col h3{font-size:20px;margin-bottom:6px;}
+  .resto-col > p{color:rgba(251,246,236,0.7);font-size:14px;margin-bottom:22px;}
+  .resto-item{display:flex;gap:16px;padding:16px 0;border-top:1px solid rgba(255,255,255,0.14);}
+  .resto-item img{width:78px;height:78px;border-radius:12px;object-fit:cover;flex-shrink:0;}
+  .resto-item h4{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:#fff;}
+  .resto-item p{font-size:13.5px;color:rgba(251,246,236,0.68);margin-top:4px;}
+  .tag{display:inline-block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:rgba(226,112,58,0.18);color:#f2a879;padding:3px 9px;border-radius:999px;margin-top:6px;}
+
+  /* ---------- CULTURE ---------- */
+  .culture-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .culture-media{position:relative;border-radius:24px;overflow:hidden;}
+  .culture-media img{width:100%;height:460px;object-fit:cover;}
+  .culture-list{list-style:none;padding:0;margin:22px 0 0;}
+  .culture-list li{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line);}
+  .culture-list b{display:block;font-size:15.5px;}
+  .culture-list p{font-size:14px;color:#5c5346;margin-top:3px;}
+  .culture-list svg{width:20px;height:20px;color:var(--paddy);flex-shrink:0;margin-top:3px;}
+
+  /* ---------- PACKAGES ---------- */
+  .pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .pkg-card{background:#fff;border-radius:22px;border:1px solid var(--line);padding:32px;display:flex;flex-direction:column;}
+  .pkg-card.featured{background:var(--charcoal);color:#fff;border-color:var(--charcoal);position:relative;transform:translateY(-10px);}
+  .pkg-card.featured .pkg-price, .pkg-card.featured h3{color:#fff;}
+  .pkg-card.featured .pkg-desc{color:rgba(251,246,236,0.7);}
+  .pkg-badge{position:absolute;top:-13px;right:28px;background:var(--sunset);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:999px;letter-spacing:.05em;}
+  .pkg-card h3{font-size:20px;}
+  .pkg-desc{font-size:13.5px;color:#8a7f6d;margin-top:6px;min-height:36px;}
+  .pkg-price{font-family:'Fraunces',serif;font-size:32px;font-weight:600;margin-top:18px;}
+  .pkg-price span{font-size:13px;font-weight:400;color:#8a7f6d;}
+  .pkg-card.featured .pkg-price span{color:rgba(251,246,236,0.6);}
+  .pkg-feat{list-style:none;padding:0;margin:22px 0;flex-grow:1;}
+  .pkg-feat li{display:flex;gap:9px;font-size:13.5px;padding:7px 0;align-items:flex-start;}
+  .pkg-feat svg{width:15px;height:15px;color:var(--paddy);flex-shrink:0;margin-top:2px;}
+  .pkg-card.featured .pkg-feat svg{color:#f2c98f;}
+  .pkg-card .btn{width:100%;margin-top:6px;}
+
+  /* ---------- GUIDE ---------- */
+  .guide-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .guide-media img{border-radius:24px;width:100%;height:420px;object-fit:cover;}
+  .guide-check{display:flex;gap:12px;margin-top:14px;}
+  .guide-check svg{width:20px;height:20px;color:var(--sunset);flex-shrink:0;margin-top:2px;}
+  .guide-check p{font-size:14.5px;color:#5c5346;}
+
+  /* ---------- POLL / CTA ---------- */
+  .poll{
+    background:var(--stone);border-radius:28px;padding:60px;text-align:center;
+    border:1px solid var(--line);
+  }
+  .poll h2{font-size:clamp(26px,4vw,38px);}
+  .poll p{margin-top:14px;color:#5c5346;max-width:480px;margin-left:auto;margin-right:auto;}
+  .poll-actions{display:flex;gap:16px;justify-content:center;margin-top:30px;flex-wrap:wrap;}
+  .poll-answer{margin-top:22px;font-family:'Fraunces',serif;font-style:italic;font-size:17px;color:var(--sunset-deep);min-height:26px;}
+
+  /* ---------- FOUNDERS ---------- */
+  .founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .founder-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px;}
+  .founder-avatar{
+    width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,var(--sunset),var(--gold));
+    display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-size:26px;font-weight:600;
+    margin-bottom:20px;overflow:hidden;
+  }
+  .founder-avatar img{width:100%;height:100%;object-fit:cover;}
+  .founder-card h3{font-size:20px;}
+  .founder-role{font-size:12.5px;color:var(--sunset-deep);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-top:4px;}
+  .founder-card p.bio{margin-top:16px;font-size:14.5px;color:#5c5346;}
+
+  /* ---------- CURRENCY MODAL ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(20,17,13,0.62);backdrop-filter:blur(3px);
+    display:none;align-items:center;justify-content:center;z-index:100;padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-box{
+    background:#fff;border-radius:22px;padding:32px;max-width:420px;width:100%;
+    box-shadow:0 30px 60px -12px rgba(0,0,0,0.35);
+  }
+  .modal-box .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+  .modal-box h3{font-size:19px;}
+  .modal-close{cursor:pointer;background:var(--stone-2);border:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .conv-row{display:flex;gap:10px;margin-bottom:14px;}
+  .conv-row input, .conv-row select{
+    flex:1;padding:12px 14px;border-radius:12px;border:1px solid var(--line);font-family:'Work Sans',sans-serif;font-size:14.5px;background:var(--cream);
+  }
+  .conv-swap{
+    display:flex;justify-content:center;margin:-2px 0 12px;
+  }
+  .conv-swap button{background:var(--stone-2);border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+  .conv-result{
+    background:var(--stone);border-radius:14px;padding:18px;text-align:center;margin-top:6px;
+  }
+  .conv-result b{font-family:'Fraunces',serif;font-size:24px;display:block;}
+  .conv-result span{font-size:12px;color:#8a7f6d;}
+  .conv-note{font-size:11.5px;color:#8a7f6d;margin-top:12px;text-align:center;}
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    position:relative;min-height:80vh;display:flex;align-items:center;
+    background:linear-gradient(180deg, rgba(8,38,36,0.40), rgba(6,36,34,0.88)),
+      url('https://commons.wikimedia.org/wiki/Special:FilePath/Balinese%20Kecak%20dance.jpg?width=1600') center 30%/cover no-repeat;
+    color:#fff;text-align:center;
+  }
+  .closing-inner{max-width:640px;margin:0 auto;padding:80px 28px;}
+  .closing .eyebrow{justify-content:center;color:#f2c98f;}
+  .closing h2{color:#fff;font-size:clamp(30px,5vw,50px);margin-top:16px;}
+  .closing p{color:rgba(255,255,255,0.82);margin-top:16px;font-size:16px;}
+  .qr-card{
+    background:rgba(255,255,255,0.96);border-radius:22px;padding:26px 30px;display:inline-flex;gap:20px;align-items:center;
+    margin-top:38px;text-align:left;
+  }
+  .qr-card img{width:110px;height:110px;border-radius:12px;}
+  .qr-card h4{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);}
+  .qr-card p{font-size:12.5px;color:#6b6152;margin-top:4px;max-width:180px;}
+
+  footer{background:var(--charcoal);color:rgba(251,246,236,0.55);padding:40px 0;font-size:13px;text-align:center;}
+  footer b{color:#fff;}
+
+  @media(max-width:980px){
+    .healing-grid,.culture-grid,.guide-wrap,.founders-grid{grid-template-columns:1fr;gap:36px;}
+    .culture-media img,.guide-media img{height:320px;}
+    .nature-grid{grid-template-columns:repeat(2,1fr);}
+    .distance-grid{grid-template-columns:1fr;}
+    .resto-grid{grid-template-columns:1fr;gap:8px;}
+    .pkg-grid{grid-template-columns:1fr;}
+    .pkg-card.featured{transform:none;}
+    .qr-card{flex-direction:column;text-align:center;}
+    .qr-card p{max-width:none;}
+    section{padding:64px 0;}
+  }
+  @media(max-width:640px){
+    .nav-inner{padding:14px 18px;}
+    .pill-toggle button{padding:6px 10px;font-size:11.5px;}
+    .wrap{padding:0 18px;}
+    .nature-grid{grid-template-columns:1fr 1fr;}
+    .hero{padding-top:100px;}
+    .poll{padding:36px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <svg viewBox="0 0 48 48" fill="none">
+        <rect x="8" y="17" width="32" height="23" rx="7" fill="#0fa393"/>
+        <rect x="8" y="17" width="32" height="23" rx="7" fill="url(#lg1)" opacity="0.25"/>
+        <path d="M18 17v-4a6 6 0 0112 0v4" stroke="#0a4744" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+        <rect x="13" y="24" width="22" height="6.5" rx="2" fill="#f5fbf9" opacity="0.9"/>
+        <circle cx="18" cy="27.2" r="1.4" fill="#0fa393"/>
+        <circle cx="30" cy="27.2" r="1.4" fill="#0fa393"/>
+        <rect x="21.5" y="34" width="5" height="3.4" rx="1.2" fill="#d7b268"/>
+        <defs><linearGradient id="lg1" x1="8" y1="17" x2="40" y2="40"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#0a4744"/></linearGradient></defs>
+      </svg>
+      Bali Experience
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="openConverter()" title="Kurs Mata Uang / Currency">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 8h4a2 2 0 010 4H9m6 4H9m3-8v10"/></svg>
+      </button>
+      <div class="pill-toggle">
+        <button id="btn-id" class="active" onclick="setLang('id')">ID</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ SHORTCUT BAR ============ -->
+<div class="shortcut-bar">
+  <div class="shortcut-inner">
+    <a href="#beach" class="shortcut-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>
+      <span data-i18n="sc_beach"></span>
+    </a>
+    <a href="#mountain" class="shortcut-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 20l6-11 4 6 3-5 7 10H2z"/></svg>
+      <span data-i18n="sc_mountain"></span>
+    </a>
+    <a href="#resto" class="shortcut-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3v8a3 3 0 006 0V3M9 11v10M18 3v18M18 3c-2 0-3 2-3 4s1 3 3 3"/></svg>
+      <span data-i18n="sc_resto"></span>
+    </a>
+    <a href="#packages" class="shortcut-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h16v9a1 1 0 01-1 1H5a1 1 0 01-1-1v-9z"/><path d="M9 10V7a3 3 0 016 0v3"/></svg>
+      <span data-i18n="sc_hotel"></span>
+    </a>
+    <a href="#culture" class="shortcut-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M6 8l12-3M6 16l12 3"/></svg>
+      <span data-i18n="sc_culture"></span>
+    </a>
+    <span class="shortcut-item" onclick="openConverter()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 8h4a2 2 0 010 4H9m6 4H9m3-8v10"/></svg>
+      <span data-i18n="sc_money"></span>
+    </span>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-2 4-6 6-6 10a6 6 0 0012 0c0-4-4-6-6-10z"/></svg>
+      <span data-i18n="hero_eyebrow"></span>
+    </div>
+    <h1 data-i18n="hero_title"></h1>
+    <p class="lead" data-i18n="hero_lead"></p>
+    <div class="hero-actions">
+      <a href="https://wa.me/62895335252540?text=Halo%20Bali%20Experience%2C%20saya%20ingin%20bertanya%20%26%20booking%20paket%20tour" target="_blank" rel="noopener" class="btn btn-whatsapp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.6.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.8-1.6-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C11 9 10.5 7.7 10.3 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.3-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3C8.6 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 14.9 3.6 13.5 3.6 12c0-4.6 3.8-8.4 8.4-8.4s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+        <span data-i18n="hero_cta_wa"></span>
+      </a>
+      <a href="#nature" class="btn btn-ghost">
+        <span data-i18n="hero_cta_explore"></span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div><b>50+</b><span data-i18n="stat_1"></span></div>
+      <div><b>4.9/5</b><span data-i18n="stat_2"></span></div>
+      <div><b>24/7</b><span data-i18n="stat_3"></span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ WHY HEALING (ABOUT US) ============ -->
+<section id="about">
+  <div class="wrap healing-grid">
+    <div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--sunset-deep)" stroke-width="1.8"><path d="M12 2c-2 4-6 6-6 10a6 6 0 0012 0c0-4-4-6-6-10z"/></svg>
+        <span data-i18n="about_eyebrow"></span>
+      </div>
+      <h2 style="margin-top:14px;font-size:clamp(28px,4vw,44px);" data-i18n="about_title"></h2>
+      <p style="margin-top:18px;color:#5c5346;font-size:16.5px;" data-i18n="about_body"></p>
+      <p style="margin-top:14px;color:#5c5346;font-size:16.5px;" data-i18n="about_body2"></p>
+    </div>
+    <div>
+      <div class="healing-card">
+        <span class="healing-num">01</span>
+        <h3 data-i18n="heal_1_t"></h3>
+        <p data-i18n="heal_1_b"></p>
+      </div>
+      <div class="healing-card">
+        <span class="healing-num">02</span>
+        <h3 data-i18n="heal_2_t"></h3>
+        <p data-i18n="heal_2_b"></p>
+      </div>
+      <div class="healing-card">
+        <span class="healing-num">03</span>
+        <h3 data-i18n="heal_3_t"></h3>
+        <p data-i18n="heal_3_b"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NATURE & DESTINATIONS ============ -->
+<section id="nature" style="background:var(--stone);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="divider">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M4 18c4-6 4-10 8-10s4 4 8 10"/><path d="M4 18h16"/></svg>
+        <span data-i18n="nature_eyebrow"></span>
+      </div>
+      <h2 data-i18n="nature_title"></h2>
+      <p data-i18n="nature_body"></p>
+    </div>
+    <div class="nature-grid">
+      <div class="nature-card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bali%20%E2%80%93%20Rice%20terrace%20(2687336831).jpg?width=600" alt="Tegalalang Rice Terrace">
+        <div class="overlay"><div><h4 data-i18n="n1_t"></h4><p data-i18n="n1_b"></p></div></div>
+      </div>
+      <div class="nature-card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Uluwatu%20Temple.jpg?width=600" alt="Uluwatu Temple">
+        <div class="overlay"><div><h4 data-i18n="n2_t"></h4><p data-i18n="n2_b"></p></div></div>
+      </div>
+      <div class="nature-card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Air%20Terjun%20Sekumpul.jpg?width=600" alt="Sekumpul Waterfall">
+        <div class="overlay"><div><h4 data-i18n="n3_t"></h4><p data-i18n="n3_b"></p></div></div>
+      </div>
+      <div class="nature-card" id="beach">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bali%20-%20Sunset%20at%20Kuta%20Beach.JPG?width=600" alt="Kuta Beach Sunset">
+        <div class="overlay"><div><h4 data-i18n="n4_t"></h4><p data-i18n="n4_b"></p></div></div>
+      </div>
+      <div class="nature-card" id="mountain">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gunung%20Batur%20Kintamani%20Bali.jpg?width=600" alt="Gunung Batur Kintamani">
+        <div class="overlay"><div><h4 data-i18n="n5_t"></h4><p data-i18n="n5_b"></p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DISTANCE ============ -->
+<section id="distance">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="divider">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-7.5 7-12a7 7 0 10-14 0c0 4.5 7 12 7 12z"/></svg>
+        <span data-i18n="dist_eyebrow"></span>
+      </div>
+      <h2 data-i18n="dist_title"></h2>
+      <p data-i18n="dist_body"></p>
+    </div>
+    <div class="distance-grid">
+      <div class="distance-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2.5 19.5L21 3M13 3h8v8M14 10L3 21l-1-4 4-1z"/></svg>
+        <h3 data-i18n="dist_1_t"></h3>
+        <div class="distance-row"><span data-i18n="dist_1_r1"></span><b>~40 min</b></div>
+        <div class="distance-row"><span data-i18n="dist_1_r2"></span><b>~25 min</b></div>
+        <div class="distance-row"><span data-i18n="dist_1_r3"></span><b>~55 min</b></div>
+      </div>
+      <div class="distance-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 14h16l-2 6H6l-2-6z"/><path d="M6 14V8l6-4 6 4v6"/></svg>
+        <h3 data-i18n="dist_2_t"></h3>
+        <div class="distance-row"><span data-i18n="dist_2_r1"></span><b>~20 min</b></div>
+        <div class="distance-row"><span data-i18n="dist_2_r2"></span><b>~2 jam / hrs</b></div>
+        <div class="distance-row"><span data-i18n="dist_2_r3"></span><b>~2.5 jam / hrs</b></div>
+      </div>
+      <div class="distance-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>
+        <h3 data-i18n="dist_3_t"></h3>
+        <div class="distance-row"><span data-i18n="dist_3_r1"></span><b>~35 min</b></div>
+        <div class="distance-row"><span data-i18n="dist_3_r2"></span><b>~15 min</b></div>
+        <div class="distance-row"><span data-i18n="dist_3_r3"></span><b>~50 min</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESTAURANTS ============ -->
+<section id="resto" class="paddy-bg">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="divider">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M6 3v8a3 3 0 006 0V3M9 11v10M18 3v18M18 3c-2 0-3 2-3 4s1 3 3 3"/></svg>
+        <span data-i18n="resto_eyebrow"></span>
+      </div>
+      <h2 data-i18n="resto_title"></h2>
+      <p data-i18n="resto_body"></p>
+    </div>
+    <div class="resto-grid">
+      <div class="resto-col">
+        <h3 data-i18n="resto_local_t"></h3>
+        <p data-i18n="resto_local_b"></p>
+        <div class="resto-item">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Babi%20guling.jpg?width=200" alt="Babi Guling">
+          <div><h4 data-i18n="resto_l1_t"></h4><p data-i18n="resto_l1_b"></p><span class="tag" data-i18n="resto_tag_local"></span></div>
+        </div>
+        <div class="resto-item">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nasi%20Campur%20Ayam%20Bali.jpg?width=200" alt="Nasi Campur Bali">
+          <div><h4 data-i18n="resto_l2_t"></h4><p data-i18n="resto_l2_b"></p><span class="tag" data-i18n="resto_tag_local"></span></div>
+        </div>
+      </div>
+      <div class="resto-col">
+        <h3 data-i18n="resto_intl_t"></h3>
+        <p data-i18n="resto_intl_b"></p>
+        <div class="resto-item">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bali%20-%20Sunset%20at%20Kuta%20Beach.JPG?width=200" alt="Beach Club Dining">
+          <div><h4 data-i18n="resto_i1_t"></h4><p data-i18n="resto_i1_b"></p><span class="tag" data-i18n="resto_tag_intl"></span></div>
+        </div>
+        <div class="resto-item">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bali%20%E2%80%93%20Rice%20terrace%20(2687336831).jpg?width=200" alt="Ubud Fine Dining">
+          <div><h4 data-i18n="resto_i2_t"></h4><p data-i18n="resto_i2_b"></p><span class="tag" data-i18n="resto_tag_intl"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CULTURE & ARTISANS ============ -->
+<section id="culture">
+  <div class="wrap culture-grid">
+    <div class="culture-media">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Balinese%20wood%20carver%3B%20June%202013.jpg?width=800" alt="Balinese Wood Carver">
+    </div>
+    <div>
+      <div class="divider">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M12 3v18M6 8l12-3M6 16l12 3"/></svg>
+        <span data-i18n="culture_eyebrow"></span>
+      </div>
+      <h2 style="margin-top:14px;font-size:clamp(26px,4vw,38px);" data-i18n="culture_title"></h2>
+      <p style="margin-top:16px;color:#5c5346;font-size:16px;" data-i18n="culture_body"></p>
+      <ul class="culture-list">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+          <div><b data-i18n="cul_1_t"></b><p data-i18n="cul_1_b"></p></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+          <div><b data-i18n="cul_2_t"></b><p data-i18n="cul_2_b"></p></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+          <div><b data-i18n="cul_3_t"></b><p data-i18n="cul_3_b"></p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PACKAGES ============ -->
+<section id="packages" style="background:var(--stone);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="divider">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v6l9 6 9-6V9"/></svg>
+        <span data-i18n="pkg_eyebrow"></span>
+      </div>
+      <h2 data-i18n="pkg_title"></h2>
+      <p data-i18n="pkg_body"></p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <h3 data-i18n="pkg_1_t"></h3>
+        <p class="pkg-desc" data-i18n="pkg_1_d"></p>
+        <div class="pkg-price">Rp 1.750<span>rb / 3D2N</span></div>
+        <ul class="pkg-feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg><span data-i18n="pkg_f1"></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg><span data-i18n="pkg_f2"></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg><span data-i18n="pkg_f3"></span></li>
+        </ul>
+        <a href="#wa-close" class="btn btn-whatsapp" data-i18n="pkg_cta"></a>
+      </div>
+      <div class="pkg-card featured">
+        <span class="pkg-badge" data-i18n="pkg_badge"></span>
+        <h3 data-i18n="pkg_2_t"></h3>
+        <p class="pkg-desc" data-i18n="pkg_2_d"></p>
+        <div class="pkg-price">Rp 3.250<span>rb / 4D3N</span></div>
+        <ul class="pkg-feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg><span data-i18n="pkg_g1"></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg><span data-i18n="pkg_g2"></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg><span data-i18n="pkg_g3"></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg><span data-i18n="pkg_g4"></span></li>
+        </ul>
+        <a href="#wa-close" class="btn btn-whatsapp" data-i18n="pkg_cta"></a>
+      </div>
+      <div class="pkg-card">
+        <h3 data-i18n="pkg_3_t"></h3>
+        <p class="pkg-desc" data-i18n="pkg_3_d"></p>
+        <div class="pkg-price">Rp 5.900<span>rb / 5D4N</span></div>
+        <ul class="pkg-feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg><span data-i18n="pkg_h1"></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg><span data-i18n="pkg_h2"></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg><span data-i18n="pkg_h3"></span></li>
+        </ul>
+        <a href="#wa-close" class="btn btn-whatsapp" data-i18n="pkg_cta"></a>
+      </div>
+    </div>
+    <p class="conv-note" style="text-align:center;margin-top:24px;" data-i18n="pkg_footnote"></p>
+  </div>
+</section>
+
+<!-- ============ TOUR GUIDE ============ -->
+<section id="guide">
+  <div class="wrap guide-wrap">
+    <div>
+      <div class="divider">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <span data-i18n="guide_eyebrow"></span>
+      </div>
+      <h2 style="margin-top:14px;font-size:clamp(26px,4vw,38px);" data-i18n="guide_title"></h2>
+      <p style="margin-top:16px;color:#5c5346;font-size:16px;" data-i18n="guide_body"></p>
+      <div class="guide-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>
+        <p data-i18n="guide_c1"></p>
+      </div>
+      <div class="guide-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>
+        <p data-i18n="guide_c2"></p>
+      </div>
+      <div class="guide-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>
+        <p data-i18n="guide_c3"></p>
+      </div>
+      <div class="guide-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>
+        <p data-i18n="guide_c4"></p>
+      </div>
+      <a href="#wa-close" class="btn btn-whatsapp" style="margin-top:26px;" data-i18n="guide_cta"></a>
+    </div>
+    <div class="guide-media">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Uluwatu%20Temple.jpg?width=800" alt="Tour Guide Bali">
+    </div>
+  </div>
+</section>
+
+<!-- ============ POLL / EXPLORE CTA ============ -->
+<section id="poll" style="background:var(--stone-2);">
+  <div class="wrap">
+    <div class="poll">
+      <div class="divider" style="justify-content:center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><path d="M12 2c-2 4-6 6-6 10a6 6 0 0012 0c0-4-4-6-6-10z"/></svg>
+        <span data-i18n="poll_eyebrow"></span>
+      </div>
+      <h2 data-i18n="poll_title"></h2>
+      <p data-i18n="poll_body"></p>
+      <div class="poll-actions">
+        <button class="btn btn-primary" onclick="answerPoll('yes')" data-i18n="poll_yes"></button>
+        <button class="btn btn-dark" onclick="answerPoll('no')" data-i18n="poll_no"></button>
+      </div>
+      <div class="poll-answer" id="poll-answer"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUNDERS ============ -->
+<section id="founders">
+  <div class="wrap">
+    <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
+      <div class="divider" style="justify-content:center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <span data-i18n="founders_eyebrow"></span>
+      </div>
+      <h2 data-i18n="founders_title"></h2>
+      <p data-i18n="founders_body"></p>
+    </div>
+    <div class="founders-grid">
+      <div class="founder-card">
+        <div class="founder-avatar"><img src="data:image/jpeg;base64,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" alt="Ariel Mondra"></div>
+        <h3>Ariel Mondra</h3>
+        <div class="founder-role" data-i18n="founder_1_role"></div>
+        <p class="bio" data-i18n="founder_1_bio"></p>
+      </div>
+      <div class="founder-card">
+        <div class="founder-avatar">JS</div>
+        <h3>Joni Saputra</h3>
+        <div class="founder-role" data-i18n="founder_2_role"></div>
+        <p class="bio" data-i18n="founder_2_bio"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING + WA QR ============ -->
+<div class="closing" id="wa-close">
+  <div class="closing-inner">
+    <div class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-2 4-6 6-6 10a6 6 0 0012 0c0-4-4-6-6-10z"/></svg>
+      <span data-i18n="closing_eyebrow"></span>
+    </div>
+    <h2 data-i18n="closing_title"></h2>
+    <p data-i18n="closing_body"></p>
+    <div class="qr-card">
+      <img id="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fwa.me%2F62895335252540%3Ftext%3DHalo%2520Bali%2520Experience%252C%2520saya%2520ingin%2520bertanya%2520%26%2520booking%2520paket%2520tour" alt="QR WhatsApp Bali Experience">
+      <div>
+        <h4 data-i18n="qr_title"></h4>
+        <p data-i18n="qr_body"></p>
+      </div>
+    </div>
+    <div>
+      <a href="https://wa.me/62895335252540?text=Halo%20Bali%20Experience%2C%20saya%20ingin%20bertanya%20%26%20booking%20paket%20tour" target="_blank" rel="noopener" class="btn btn-whatsapp" style="margin-top:24px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.6.9-.8 1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.8-1.6-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C11 9 10.5 7.7 10.3 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.3-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3C8.6 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 14.9 3.6 13.5 3.6 12c0-4.6 3.8-8.4 8.4-8.4s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+        <span data-i18n="closing_cta"></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Bali Experience</b> — <span data-i18n="footer_tag"></span></p>
+    <p style="margin-top:8px;">© 2026 Bali Experience by Ariel Mondra &amp; Joni Saputra. <span data-i18n="footer_rights"></span></p>
+  </div>
+</footer>
+
+<!-- ============ CURRENCY MODAL ============ -->
+<div class="modal-overlay" id="conv-modal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 data-i18n="conv_title"></h3>
+      <button class="modal-close" onclick="closeConverter()">✕</button>
+    </div>
+    <div class="conv-row">
+      <input type="number" id="conv-amount" value="1000000" min="0" oninput="convertCurrency()">
+      <select id="conv-from" onchange="convertCurrency()">
+        <option value="IDR" selected>IDR — Rupiah</option>
+        <option value="USD">USD — US Dollar</option>
+        <option value="EUR">EUR — Euro</option>
+        <option value="AUD">AUD — Aussie Dollar</option>
+        <option value="SGD">SGD — Sing Dollar</option>
+        <option value="GBP">GBP — Pound</option>
+        <option value="JPY">JPY — Yen</option>
+      </select>
+    </div>
+    <div class="conv-swap">
+      <button onclick="swapCurrency()" title="Swap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M7 7h13l-4-4M17 17H4l4 4"/></svg>
+      </button>
+    </div>
+    <div class="conv-row">
+      <input type="text" id="conv-amount-to" disabled placeholder="0">
+      <select id="conv-to" onchange="convertCurrency()">
+        <option value="USD" selected>USD — US Dollar</option>
+        <option value="IDR">IDR — Rupiah</option>
+        <option value="EUR">EUR — Euro</option>
+        <option value="AUD">AUD — Aussie Dollar</option>
+        <option value="SGD">SGD — Sing Dollar</option>
+        <option value="GBP">GBP — Pound</option>
+        <option value="JPY">JPY — Yen</option>
+      </select>
+    </div>
+    <div class="conv-result">
+      <b id="conv-result-text">—</b>
+      <span id="conv-rate-text" data-i18n="conv_loading"></span>
+    </div>
+    <p class="conv-note" data-i18n="conv_note"></p>
+  </div>
+</div>
+
+<script>
+/* ================= I18N ================= */
+const dict = {
+  id: {
+    hero_eyebrow: "Healing Trip · Island of the Gods",
+    hero_title: "Temukan kembali <em>ketenanganmu</em> di Bali",
+    hero_lead: "Bali Experience merancang perjalanan healing yang personal — memadukan alam, budaya, dan kenyamanan menginap, ditemani tour guide lokal profesional.",
+    hero_cta_wa: "Chat & Booking via WhatsApp",
+    hero_cta_explore: "Jelajahi Destinasi",
+    stat_1: "Destinasi kurasi",
+    stat_2: "Rating tamu",
+    stat_3: "Respon cepat",
+
+    about_eyebrow: "Tentang Kami",
+    about_title: "Mengapa healing itu penting?",
+    about_body: "Rutinitas yang padat perlahan menguras energi dan fokus kita. Penelitian di bidang psikologi menunjukkan bahwa jeda untuk healing — menjauh sejenak dari tekanan sehari-hari — membantu menurunkan stres, memulihkan kejernihan berpikir, dan meningkatkan kualitas hubungan dengan diri sendiri maupun orang terdekat.",
+    about_body2: "Bali Experience hadir sebagai jembatan menuju jeda itu. Kami tim lokal yang memahami setiap sudut Bali — dari sawah berundak hingga pura di tepi tebing — dan merancang perjalanan yang benar-benar memulihkan, bukan sekadar berpindah tempat.",
+    heal_1_t: "Menurunkan Stres",
+    heal_1_b: "Suara alam, udara tropis, dan ritme yang lebih lambat membantu tubuh keluar dari mode 'siaga' harian.",
+    heal_2_t: "Memulihkan Fokus",
+    heal_2_b: "Jeda dari layar dan rutinitas memberi ruang bagi pikiran untuk kembali jernih dan kreatif.",
+    heal_3_t: "Mempererat Hubungan",
+    heal_3_b: "Waktu berkualitas bersama pasangan, keluarga, atau sahabat jauh dari gangguan pekerjaan.",
+
+    nature_eyebrow: "Alam & Wisata",
+    nature_title: "Keindahan alam Bali yang wajib dijelajahi",
+    nature_body: "Dari sawah hijau berundak hingga tebing yang menghadap samudra — inilah beberapa destinasi favorit yang kami kurasi dalam setiap paket perjalanan.",
+    n1_t: "Tegalalang Rice Terrace",
+    n1_b: "Sawah berundak ikonik di Ubud, sejuk dan menenangkan.",
+    n2_t: "Pura Luhur Uluwatu",
+    n2_b: "Pura suci di atas tebing dengan panorama matahari terbenam.",
+    n3_t: "Air Terjun Sekumpul",
+    n3_b: "Salah satu air terjun terindah di Bali Utara.",
+    n4_t: "Pantai Kuta",
+    n4_b: "Sunset legendaris dan ombak yang ramah untuk bersantai.",
+    n5_t: "Gunung & Danau Batur",
+    n5_b: "Panorama gunung berapi aktif dan danau kaldera di Kintamani.",
+
+    sc_beach: "Pantai",
+    sc_mountain: "Gunung",
+    sc_resto: "Resto",
+    sc_hotel: "Hotel",
+    sc_culture: "Pusat Budaya",
+    sc_money: "Tukar Uang",
+
+    dist_eyebrow: "Akses & Jarak",
+    dist_title: "Mudah dijangkau dari mana saja",
+    dist_body: "Perkiraan waktu tempuh dari titik-titik penting di Bali menuju area wisata populer.",
+    dist_1_t: "Dari Bandara Ngurah Rai (DPS)",
+    dist_1_r1: "Menuju Kuta / Seminyak",
+    dist_1_r2: "Menuju Nusa Dua",
+    dist_1_r3: "Menuju Ubud",
+    dist_2_t: "Dari Pelabuhan (Benoa / Padang Bai)",
+    dist_2_r1: "Menuju Sanur",
+    dist_2_r2: "Menuju Ubud",
+    dist_2_r3: "Menuju Kintamani",
+    dist_3_t: "Dari Pantai-Pantai Populer",
+    dist_3_r1: "Kuta ke Uluwatu",
+    dist_3_r2: "Kuta ke Seminyak",
+    dist_3_r3: "Kuta ke Sanur",
+
+    resto_eyebrow: "Kuliner",
+    resto_title: "Cita rasa lokal & internasional",
+    resto_body: "Kami rekomendasikan tempat makan terpercaya, dari warung khas Bali hingga resto internasional favorit wisatawan.",
+    resto_local_t: "Kuliner Khas Lokal",
+    resto_local_b: "Rasakan bumbu asli Bali yang kaya rempah.",
+    resto_l1_t: "Babi Guling Warung Legendaris",
+    resto_l1_b: "Hidangan babi panggang khas Bali dengan bumbu rempah lengkap.",
+    resto_l2_t: "Nasi Campur Bali",
+    resto_l2_b: "Perpaduan lauk khas Bali dalam satu piring — gurih dan segar.",
+    resto_intl_t: "Resto Internasional",
+    resto_intl_b: "Pilihan bagi yang ingin bersantap dengan pemandangan.",
+    resto_i1_t: "Beach Club Sunset Dining",
+    resto_i1_b: "Menu western & fusion dengan panorama pantai di Kuta/Seminyak.",
+    resto_i2_t: "Ubud Fine Dining",
+    resto_i2_b: "Restoran farm-to-table dengan suasana sawah yang menenangkan.",
+    resto_tag_local: "Lokal",
+    resto_tag_intl: "Internasional",
+
+    culture_eyebrow: "Budaya & Kerajinan",
+    culture_title: "Menyelami budaya & pengrajin lokal Bali",
+    culture_body: "Bali bukan hanya tentang pemandangan — tapi juga tradisi yang hidup. Kami mengajak Anda mengenal langsung para seniman dan pengrajin yang menjaga warisan budaya ini tetap lestari.",
+    cul_1_t: "Tari Kecak & Api",
+    cul_1_b: "Pertunjukan sakral dengan puluhan penari yang melantunkan 'cak' secara serempak, biasa digelar saat senja di Uluwatu.",
+    cul_2_t: "Desa Pengrajin Ukir Kayu",
+    cul_2_b: "Kunjungi sentra ukiran kayu di Mas, Ubud — saksikan langsung proses memahat karya seni tradisional.",
+    cul_3_t: "Perak & Tenun Khas Bali",
+    cul_3_b: "Sentra kerajinan perak di Celuk dan kain tenun khas yang diwariskan turun-temurun.",
+
+    pkg_eyebrow: "Paket Perjalanan",
+    pkg_title: "Paket menginap yang terjangkau untuk semua",
+    pkg_body: "Pilih paket sesuai kebutuhan Anda — semua sudah termasuk akomodasi hotel yang nyaman dan terpercaya.",
+    pkg_1_t: "Bali Serenity",
+    pkg_1_d: "Cocok untuk healing singkat berdua atau sendiri.",
+    pkg_f1: "Hotel bintang 3, 2 malam",
+    pkg_f2: "Antar-jemput bandara",
+    pkg_f3: "1x tur sawah & pantai",
+    pkg_2_t: "Bali Harmony",
+    pkg_2_d: "Paling banyak dipilih — lengkap dan seimbang.",
+    pkg_g1: "Hotel bintang 4, 3 malam",
+    pkg_g2: "Antar-jemput bandara",
+    pkg_g3: "Tour guide profesional 2 hari",
+    pkg_g4: "Tiket masuk 3 destinasi utama",
+    pkg_3_t: "Bali Bliss Premium",
+    pkg_3_d: "Pengalaman lengkap dengan sentuhan mewah.",
+    pkg_h1: "Villa privat kolam renang, 4 malam",
+    pkg_h2: "Tour guide privat harian",
+    pkg_h3: "Termasuk kelas budaya & spa tradisional",
+    pkg_badge: "Terpopuler",
+    pkg_cta: "Pilih Paket Ini",
+    pkg_footnote: "*Harga dapat berubah sesuai musim & ketersediaan. Booking langsung via WhatsApp untuk penawaran terbaru.",
+
+    guide_eyebrow: "Akomodasi & Pemandu",
+    guide_title: "Ditemani tour guide profesional & terjangkau",
+    guide_body: "Setiap paket dilengkapi pemandu lokal berpengalaman yang menguasai medan, budaya, dan bahasa — memastikan perjalanan Anda aman, lancar, dan penuh cerita.",
+    guide_c1: "Pemandu bersertifikat & fasih Bahasa Inggris",
+    guide_c2: "Kendaraan ber-AC yang nyaman & terawat",
+    guide_c3: "Itinerary fleksibel sesuai minat Anda",
+    guide_c4: "Harga transparan, tanpa biaya tersembunyi",
+    guide_cta: "Tanya Ketersediaan Guide",
+
+    poll_eyebrow: "Sebelum Anda Pergi",
+    poll_title: "Pernahkah Anda ke Bali?",
+    poll_body: "Baik ini kunjungan pertama atau Anda rindu kembali — mari rencanakan momen healing berikutnya bersama kami.",
+    poll_yes: "Pernah, ingin kembali!",
+    poll_no: "Belum, ini saatnya!",
+
+    founders_eyebrow: "Tim Kami",
+    founders_title: "Ditemani langsung oleh para pendiri",
+    founders_body: "Bali Experience dibangun oleh dua orang yang jatuh cinta pada Bali dan ingin membagikannya dengan cara yang autentik.",
+    founder_1_role: "Co-Founder & Travel Curator",
+    founder_1_bio: "Ariel merancang setiap itinerary agar terasa personal — memadukan destinasi ikonik dengan tempat tersembunyi favorit warga lokal.",
+    founder_2_role: "Co-Founder & Guest Experience",
+    founder_2_bio: "Joni memastikan setiap tamu merasa diperhatikan, mulai dari respon chat pertama hingga hari terakhir perjalanan di Bali.",
+
+    closing_eyebrow: "Mari Mulai Perjalanan Anda",
+    closing_title: "Saatnya menulis cerita Bali Anda sendiri",
+    closing_body: "Scan kode QR di bawah untuk langsung terhubung dengan tim kami di WhatsApp — booking, tanya-tanya, atau sekadar cerita rencana liburan Anda.",
+    qr_title: "Scan untuk Chat WhatsApp",
+    qr_body: "Respon cepat, siap bantu 24/7.",
+    closing_cta: "Chat Sekarang via WhatsApp",
+    footer_tag: "Healing journey through the Island of Gods.",
+    footer_rights: "Seluruh hak cipta dilindungi.",
+
+    conv_title: "Konversi Mata Uang",
+    conv_loading: "Memuat kurs terkini…",
+    conv_note: "Kurs diambil secara live dari sumber data pasar. Untuk transaksi resmi, selalu cek kembali dengan bank/money changer.",
+  },
+  en: {
+    hero_eyebrow: "Healing Trip · Island of the Gods",
+    hero_title: "Rediscover your <em>calm</em> in Bali",
+    hero_lead: "Bali Experience curates personal healing journeys — blending nature, culture, and comfortable stays, guided by professional local tour guides.",
+    hero_cta_wa: "Chat & Book via WhatsApp",
+    hero_cta_explore: "Explore Destinations",
+    stat_1: "Curated destinations",
+    stat_2: "Guest rating",
+    stat_3: "Fast response",
+
+    about_eyebrow: "About Us",
+    about_title: "Why does healing matter?",
+    about_body: "Busy routines slowly drain our energy and focus. Psychology research shows that taking time to heal — stepping away from daily pressure — helps lower stress, restore mental clarity, and improve our relationships with ourselves and loved ones.",
+    about_body2: "Bali Experience is your bridge to that pause. We're a local team who knows every corner of Bali — from terraced rice fields to cliffside temples — designing trips that truly restore you, not just relocate you.",
+    heal_1_t: "Lowers Stress",
+    heal_1_b: "Nature sounds, tropical air, and a slower rhythm help your body exit daily 'alert' mode.",
+    heal_2_t: "Restores Focus",
+    heal_2_b: "A break from screens and routine gives your mind space to become clear and creative again.",
+    heal_3_t: "Strengthens Bonds",
+    heal_3_b: "Quality time with partners, family, or friends, away from work distractions.",
+
+    nature_eyebrow: "Nature & Sights",
+    nature_title: "Bali's natural beauty worth exploring",
+    nature_body: "From lush terraced rice fields to ocean-facing cliffs — here are favorite destinations we curate into every trip.",
+    n1_t: "Tegalalang Rice Terrace",
+    n1_b: "Ubud's iconic terraced fields, cool and calming.",
+    n2_t: "Uluwatu Temple",
+    n2_b: "A sacred cliffside temple with stunning sunset views.",
+    n3_t: "Sekumpul Waterfall",
+    n3_b: "One of North Bali's most beautiful waterfalls.",
+    n4_t: "Kuta Beach",
+    n4_b: "Legendary sunsets and beginner-friendly waves.",
+    n5_t: "Mount & Lake Batur",
+    n5_b: "Panoramic views of an active volcano and caldera lake in Kintamani.",
+
+    sc_beach: "Beach",
+    sc_mountain: "Mountain",
+    sc_resto: "Dining",
+    sc_hotel: "Hotels",
+    sc_culture: "Culture Hub",
+    sc_money: "Currency",
+
+    dist_eyebrow: "Access & Distance",
+    dist_title: "Easy to reach from anywhere",
+    dist_body: "Approximate travel time from key points in Bali to popular tourist areas.",
+    dist_1_t: "From Ngurah Rai Airport (DPS)",
+    dist_1_r1: "To Kuta / Seminyak",
+    dist_1_r2: "To Nusa Dua",
+    dist_1_r3: "To Ubud",
+    dist_2_t: "From the Harbor (Benoa / Padang Bai)",
+    dist_2_r1: "To Sanur",
+    dist_2_r2: "To Ubud",
+    dist_2_r3: "To Kintamani",
+    dist_3_t: "From Popular Beaches",
+    dist_3_r1: "Kuta to Uluwatu",
+    dist_3_r2: "Kuta to Seminyak",
+    dist_3_r3: "Kuta to Sanur",
+
+    resto_eyebrow: "Dining",
+    resto_title: "Local & international flavors",
+    resto_body: "We recommend trusted places to eat, from authentic Balinese warungs to traveler-favorite international restaurants.",
+    resto_local_t: "Local Specialties",
+    resto_local_b: "Taste authentic, spice-rich Balinese cooking.",
+    resto_l1_t: "Legendary Babi Guling Warung",
+    resto_l1_b: "Balinese roast pork dish with a full spice blend.",
+    resto_l2_t: "Nasi Campur Bali",
+    resto_l2_b: "A mix of Balinese side dishes on one plate — savory and fresh.",
+    resto_intl_t: "International Dining",
+    resto_intl_b: "Great picks if you want a meal with a view.",
+    resto_i1_t: "Beach Club Sunset Dining",
+    resto_i1_b: "Western & fusion menus with ocean views in Kuta/Seminyak.",
+    resto_i2_t: "Ubud Fine Dining",
+    resto_i2_b: "Farm-to-table restaurants with a calming rice-field setting.",
+    resto_tag_local: "Local",
+    resto_tag_intl: "International",
+
+    culture_eyebrow: "Culture & Craft",
+    culture_title: "Discover Bali's culture & local artisans",
+    culture_body: "Bali isn't just scenery — it's living tradition. We introduce you to the artists and craftspeople keeping this heritage alive.",
+    cul_1_t: "Kecak & Fire Dance",
+    cul_1_b: "A sacred performance with dozens of dancers chanting 'cak' in unison, usually held at sunset in Uluwatu.",
+    cul_2_t: "Wood Carving Villages",
+    cul_2_b: "Visit the wood-carving center in Mas, Ubud — watch traditional artisans sculpt in real time.",
+    cul_3_t: "Silver & Balinese Weaving",
+    cul_3_b: "Silver craft centers in Celuk and handwoven textiles passed down through generations.",
+
+    pkg_eyebrow: "Travel Packages",
+    pkg_title: "Affordable stay packages for everyone",
+    pkg_body: "Choose the package that fits your needs — all include comfortable, trusted hotel accommodation.",
+    pkg_1_t: "Bali Serenity",
+    pkg_1_d: "Perfect for a short healing getaway.",
+    pkg_f1: "3-star hotel, 2 nights",
+    pkg_f2: "Airport transfer",
+    pkg_f3: "1x rice field & beach tour",
+    pkg_2_t: "Bali Harmony",
+    pkg_2_d: "Our most popular pick — complete and balanced.",
+    pkg_g1: "4-star hotel, 3 nights",
+    pkg_g2: "Airport transfer",
+    pkg_g3: "2-day professional tour guide",
+    pkg_g4: "Entry tickets to 3 main destinations",
+    pkg_3_t: "Bali Bliss Premium",
+    pkg_3_d: "A complete experience with a luxury touch.",
+    pkg_h1: "Private pool villa, 4 nights",
+    pkg_h2: "Daily private tour guide",
+    pkg_h3: "Includes cultural class & traditional spa",
+    pkg_badge: "Most Popular",
+    pkg_cta: "Choose This Package",
+    pkg_footnote: "*Prices may vary by season & availability. Book directly via WhatsApp for the latest offers.",
+
+    guide_eyebrow: "Accommodation & Guide",
+    guide_title: "Accompanied by a professional, affordable guide",
+    guide_body: "Every package includes an experienced local guide who knows the terrain, culture, and language — keeping your trip safe, smooth, and full of stories.",
+    guide_c1: "Certified guides, fluent in English",
+    guide_c2: "Comfortable, well-maintained AC vehicles",
+    guide_c3: "Flexible itinerary based on your interests",
+    guide_c4: "Transparent pricing, no hidden fees",
+    guide_cta: "Ask About Guide Availability",
+
+    poll_eyebrow: "Before You Go",
+    poll_title: "Have you ever been to Bali?",
+    poll_body: "Whether it's your first visit or you're longing to return — let's plan your next healing moment together.",
+    poll_yes: "Yes, want to return!",
+    poll_no: "Not yet, time to go!",
+
+    founders_eyebrow: "Our Team",
+    founders_title: "Meet the founders behind Bali Experience",
+    founders_body: "Bali Experience was built by two people who fell in love with Bali and wanted to share it authentically.",
+    founder_1_role: "Co-Founder & Travel Curator",
+    founder_1_bio: "Ariel designs every itinerary to feel personal — blending iconic sights with hidden local favorites.",
+    founder_2_role: "Co-Founder & Guest Experience",
+    founder_2_bio: "Joni makes sure every guest feels cared for, from the first chat to the very last day of the trip.",
+
+    closing_eyebrow: "Let's Start Your Journey",
+    closing_title: "Time to write your own Bali story",
+    closing_body: "Scan the QR code below to connect instantly with our team on WhatsApp — book, ask questions, or just share your holiday plans.",
+    qr_title: "Scan to Chat on WhatsApp",
+    qr_body: "Fast response, here 24/7.",
+    closing_cta: "Chat Now on WhatsApp",
+    footer_tag: "Healing journey through the Island of Gods.",
+    footer_rights: "All rights reserved.",
+
+    conv_title: "Currency Converter",
+    conv_loading: "Loading live rate…",
+    conv_note: "Rates are pulled live from market data. For official transactions, always double-check with your bank or money changer.",
+  }
+};
+
+function setLang(lang){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(dict[lang][key] !== undefined){
+      el.innerHTML = dict[lang][key];
+    }
+  });
+  document.getElementById('btn-id').classList.toggle('active', lang==='id');
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.documentElement.lang = lang;
+  window.__currentLang = lang;
+}
+setLang('id');
+
+/* ================= POLL ================= */
+function answerPoll(v){
+  const box = document.getElementById('poll-answer');
+  const lang = window.__currentLang || 'id';
+  const messages = {
+    id: { yes: "Senang mendengarnya! Yuk rencanakan kunjungan berikutnya bersama kami 🌴", no: "Ini saat yang tepat untuk memulai — mari kami bantu rencanakan perjalanan pertamamu! 🌺" },
+    en: { yes: "Great to hear! Let's plan your next visit together 🌴", no: "There's no better time to start — let us help plan your first trip! 🌺" }
+  };
+  box.textContent = messages[lang][v];
+}
+
+/* ================= CURRENCY CONVERTER ================= */
+function openConverter(){
+  document.getElementById('conv-modal').classList.add('open');
+  convertCurrency();
+}
+function closeConverter(){
+  document.getElementById('conv-modal').classList.remove('open');
+}
+document.getElementById('conv-modal').addEventListener('click', e=>{
+  if(e.target.id === 'conv-modal') closeConverter();
+});
+function swapCurrency(){
+  const from = document.getElementById('conv-from');
+  const to = document.getElementById('conv-to');
+  const tmp = from.value;
+  from.value = to.value;
+  to.value = tmp;
+  convertCurrency();
+}
+let convTimer;
+function convertCurrency(){
+  clearTimeout(convTimer);
+  convTimer = setTimeout(doConvert, 300);
+}
+async function doConvert(){
+  const amount = parseFloat(document.getElementById('conv-amount').value) || 0;
+  const from = document.getElementById('conv-from').value;
+  const to = document.getElementById('conv-to').value;
+  const resultText = document.getElementById('conv-result-text');
+  const rateText = document.getElementById('conv-rate-text');
+  const lang = window.__currentLang || 'id';
+  rateText.textContent = lang==='id' ? 'Memuat kurs terkini…' : 'Loading live rate…';
+  if(from === to){
+    resultText.textContent = amount.toLocaleString() + ' ' + to;
+    rateText.textContent = lang==='id' ? 'Mata uang sama' : 'Same currency';
+    document.getElementById('conv-amount-to').value = amount.toLocaleString();
+    return;
+  }
+  try{
+    const res = await fetch(`https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`);
+    if(!res.ok) throw new Error('fetch failed');
+    const data = await res.json();
+    const converted = data.rates[to];
+    resultText.textContent = converted.toLocaleString(undefined,{maximumFractionDigits:2}) + ' ' + to;
+    document.getElementById('conv-amount-to').value = converted.toLocaleString(undefined,{maximumFractionDigits:2});
+    rateText.textContent = (lang==='id' ? 'Kurs: 1 ' : 'Rate: 1 ') + from + ' = ' + (converted/amount).toLocaleString(undefined,{maximumFractionDigits:6}) + ' ' + to;
+  }catch(err){
+    resultText.textContent = '—';
+    rateText.textContent = lang==='id' ? 'Gagal memuat kurs. Coba lagi.' : 'Failed to load rate. Try again.';
+  }
+}
+</script>
+
+</body>
+</html>
