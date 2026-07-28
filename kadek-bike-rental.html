@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kadek Bike Rental — Sewa Motor & Mobil Bali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root{
+    --void:#060B13;
+    --deep:#0A1626;
+    --deep2:#0D2233;
+    --teal:#0F3D3E;
+    --lime:#C6FF3A;
+    --cyan:#23D5F0;
+    --gold:#FFB84D;
+    --ink:#EAF6F6;
+    --ink-dim:#8FA6BC;
+    --glass:rgba(255,255,255,0.045);
+    --glass-brd:rgba(255,255,255,0.12);
+    --danger:#FF6B6B;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--void);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(35,213,240,0.14), transparent),
+      radial-gradient(ellipse 60% 40% at 90% 0%, rgba(198,255,58,0.08), transparent);
+  }
+  .font-display{font-family:'Orbitron', sans-serif;}
+  .font-mono{font-family:'Space Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:100;
+    backdrop-filter:blur(14px);
+    background:rgba(6,11,19,0.72);
+    border-bottom:1px solid var(--glass-brd);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-mark{
+    width:36px; height:36px; border-radius:10px;
+    background:linear-gradient(135deg, var(--lime), var(--cyan));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Orbitron'; font-weight:900; color:#04120f; font-size:16px;
+    box-shadow:0 0 22px rgba(198,255,58,0.45);
+  }
+  .brand-name{font-family:'Orbitron'; font-weight:700; font-size:15px; letter-spacing:0.5px;}
+  .brand-name span{color:var(--lime);}
+  .nav-links{display:flex; gap:28px; font-size:14px; color:var(--ink-dim);}
+  .nav-links a:hover{color:var(--cyan);}
+  .nav-cta{
+    background:var(--lime); color:#04120f; font-weight:700; font-size:13px;
+    padding:10px 18px; border-radius:999px; border:none; cursor:pointer;
+    box-shadow:0 0 20px rgba(198,255,58,0.35);
+  }
+  @media(max-width:780px){ .nav-links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  header.hero{position:relative; padding:90px 0 70px; overflow:hidden;}
+  .wave-divider{position:absolute; bottom:-1px; left:0; width:100%; line-height:0;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;}
+  @media(max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Space Mono'; font-size:12px; color:var(--lime);
+    border:1px solid rgba(198,255,58,0.35); padding:6px 12px; border-radius:999px;
+    background:rgba(198,255,58,0.06); margin-bottom:20px;
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--lime); box-shadow:0 0 8px var(--lime); animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  h1.hero-title{
+    font-family:'Orbitron'; font-weight:900; letter-spacing:0.5px;
+    font-size:clamp(34px,5.2vw,58px); line-height:1.08;
+    background:linear-gradient(90deg, var(--ink) 30%, var(--cyan) 65%, var(--lime) 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    margin-bottom:20px;
+  }
+  .hero-sub{color:var(--ink-dim); font-size:17px; max-width:520px; margin-bottom:28px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px;}
+  .btn-primary{
+    background:linear-gradient(135deg, var(--lime), var(--cyan));
+    color:#04120f; font-weight:700; padding:15px 26px; border-radius:12px; border:none;
+    cursor:pointer; font-size:15px; box-shadow:0 8px 28px rgba(35,213,240,0.28);
+  }
+  .btn-ghost{
+    border:1px solid var(--glass-brd); color:var(--ink); background:var(--glass);
+    padding:15px 26px; border-radius:12px; font-weight:600; cursor:pointer; font-size:15px;
+  }
+  .founder-strip{display:flex; align-items:center; gap:12px; color:var(--ink-dim); font-size:13px;}
+  .founder-avatar{
+    width:34px; height:34px; border-radius:50%;
+    background:linear-gradient(135deg, var(--gold), var(--lime));
+    display:flex; align-items:center; justify-content:center; font-family:'Orbitron'; font-weight:700; color:#1a1200; font-size:13px;
+  }
+
+  /* QR card */
+  .qr-card{
+    background:var(--glass); border:1px solid var(--glass-brd); border-radius:22px;
+    padding:26px; backdrop-filter:blur(10px); position:relative;
+    box-shadow:0 0 60px rgba(35,213,240,0.08);
+  }
+  .qr-card::before{
+    content:''; position:absolute; inset:-1px; border-radius:22px; padding:1px;
+    background:linear-gradient(135deg, var(--cyan), transparent 40%, var(--lime));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude; opacity:0.6; pointer-events:none;
+  }
+  .qr-card h3{font-family:'Orbitron'; font-size:14px; margin-bottom:4px; color:var(--lime);}
+  .qr-card p{color:var(--ink-dim); font-size:13px; margin-bottom:16px;}
+  .qr-box{
+    background:#fff; padding:12px; border-radius:14px; width:fit-content; margin:0 auto 16px;
+    box-shadow:0 0 30px rgba(198,255,58,0.25);
+  }
+  #qrcode img{border-radius:6px;}
+  .qr-foot{display:flex; align-items:center; justify-content:space-between; font-size:12px; color:var(--ink-dim);}
+  .wa-num{font-family:'Space Mono'; color:var(--ink);}
+
+  /* ---------- SECTION HEADS ---------- */
+  .section{padding:80px 0;}
+  .section-head{max-width:640px; margin-bottom:44px;}
+  .kicker{font-family:'Space Mono'; font-size:12px; color:var(--cyan); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px; display:block;}
+  h2.section-title{font-family:'Orbitron'; font-weight:700; font-size:clamp(24px,3.4vw,34px); margin-bottom:12px;}
+  .section-sub{color:var(--ink-dim); font-size:15.5px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media(max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+  .about-card{
+    background:var(--glass); border:1px solid var(--glass-brd); border-radius:18px; padding:28px;
+    transition:transform .25s, border-color .25s;
+  }
+  .about-card:hover{transform:translateY(-4px); border-color:rgba(35,213,240,0.4);}
+  .about-icon{width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;}
+  .about-card h4{font-family:'Orbitron'; font-size:15px; margin-bottom:10px;}
+  .about-card p{color:var(--ink-dim); font-size:14px;}
+
+  /* ---------- CATALOG ---------- */
+  .tabs{display:flex; gap:10px; margin-bottom:30px;}
+  .tab-btn{
+    font-family:'Orbitron'; font-size:13px; padding:12px 22px; border-radius:999px; cursor:pointer;
+    border:1px solid var(--glass-brd); background:var(--glass); color:var(--ink-dim); font-weight:600;
+    transition:all .2s;
+  }
+  .tab-btn.active{background:linear-gradient(135deg, var(--lime), var(--cyan)); color:#04120f; border-color:transparent;}
+  .grid-cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:20px;}
+  .v-card{
+    background:var(--glass); border:1px solid var(--glass-brd); border-radius:18px; padding:22px;
+    position:relative; overflow:hidden; transition:transform .25s, box-shadow .25s;
+  }
+  .v-card:hover{transform:translateY(-5px); box-shadow:0 14px 34px rgba(0,0,0,0.35);}
+  .v-badge{
+    position:absolute; top:16px; right:16px; font-family:'Space Mono'; font-size:11px;
+    padding:4px 10px; border-radius:999px; border:1px solid var(--glass-brd); color:var(--ink-dim);
+  }
+  .v-badge.hot{background:rgba(198,255,58,0.14); color:var(--lime); border-color:rgba(198,255,58,0.4);}
+  .v-icon-wrap{
+    width:100%; height:110px; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(circle at 30% 30%, rgba(35,213,240,0.14), transparent 70%);
+    border-radius:14px; margin-bottom:16px;
+  }
+  .v-icon-wrap svg{width:78px; height:78px;}
+  .v-name{font-weight:700; font-size:16px; margin-bottom:4px;}
+  .v-cc{font-family:'Space Mono'; font-size:12px; color:var(--ink-dim); margin-bottom:14px;}
+  .v-foot{display:flex; align-items:flex-end; justify-content:space-between;}
+  .v-price{font-family:'Orbitron'; font-size:17px; color:var(--gold);}
+  .v-price small{font-family:'Plus Jakarta Sans'; font-size:11px; color:var(--ink-dim); font-weight:400;}
+  .v-stock{font-size:12px; color:var(--ink-dim); text-align:right;}
+  .v-stock b{color:var(--cyan);}
+
+  /* ---------- PROMO ---------- */
+  .promo{
+    margin:80px 0 0; padding:34px 0; background:linear-gradient(90deg, rgba(198,255,58,0.1), rgba(35,213,240,0.1));
+    border-top:1px solid var(--glass-brd); border-bottom:1px solid var(--glass-brd);
+    overflow:hidden; position:relative;
+  }
+  .promo-marquee{display:flex; gap:50px; white-space:nowrap; animation:scroll 16s linear infinite; width:max-content;}
+  .promo-marquee span{font-family:'Orbitron'; font-size:20px; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:16px;}
+  .promo-marquee span em{color:var(--lime); font-style:normal;}
+  @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  /* ---------- PAYMENT ---------- */
+  .pay-card{
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    background:var(--glass); border:1px solid var(--glass-brd); border-radius:20px; padding:28px 32px;
+  }
+  .pay-left{display:flex; align-items:center; gap:18px;}
+  .bca-badge{
+    width:70px; height:70px; border-radius:14px; background:#0060AF;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    box-shadow:0 0 24px rgba(0,96,175,0.5);
+  }
+  .bca-badge span{font-family:'Orbitron'; font-weight:900; color:#fff; font-size:15px; letter-spacing:1px;}
+  .pay-acc{font-family:'Space Mono'; font-size:22px; letter-spacing:1px;}
+  .pay-name{color:var(--ink-dim); font-size:13px; margin-top:2px;}
+  .copy-btn{
+    background:var(--glass); border:1px solid var(--glass-brd); color:var(--ink);
+    padding:12px 20px; border-radius:10px; cursor:pointer; font-size:13px; font-weight:600;
+  }
+  .copy-btn:hover{border-color:var(--cyan); color:var(--cyan);}
+
+  /* ---------- FORM ---------- */
+  .form-shell{
+    background:var(--glass); border:1px solid var(--glass-brd); border-radius:22px; padding:40px;
+  }
+  @media(max-width:600px){ .form-shell{padding:24px;} }
+  .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media(max-width:700px){ .form-grid{grid-template-columns:1fr;} }
+  .field{display:flex; flex-direction:column; gap:7px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:13px; color:var(--ink-dim); font-weight:600;}
+  .field small.hint{color:var(--ink-dim); font-size:11.5px; margin-top:-3px;}
+  .field input, .field select{
+    background:rgba(255,255,255,0.04); border:1px solid var(--glass-brd); border-radius:10px;
+    padding:12px 14px; color:var(--ink); font-size:14px; font-family:'Plus Jakarta Sans';
+  }
+  .field input:focus, .field select:focus{outline:none; border-color:var(--cyan); box-shadow:0 0 0 3px rgba(35,213,240,0.15);}
+  .field select option{background:#0A1626; color:var(--ink);}
+  #paspor-field{display:none;}
+  .submit-row{display:flex; align-items:center; gap:16px; margin-top:26px; flex-wrap:wrap;}
+  .req-note{font-size:12px; color:var(--ink-dim);}
+
+  /* ---------- SUCCESS OVERLAY ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(6,11,19,0.86); backdrop-filter:blur(6px);
+    display:none; align-items:center; justify-content:center; z-index:1000; padding:20px;
+  }
+  .overlay.show{display:flex;}
+  .success-card{
+    max-width:440px; width:100%; background:var(--deep2); border:1px solid rgba(198,255,58,0.35);
+    border-radius:22px; padding:38px 32px; text-align:center;
+    box-shadow:0 0 60px rgba(198,255,58,0.18);
+  }
+  .success-icon{
+    width:64px; height:64px; border-radius:50%; margin:0 auto 20px;
+    background:linear-gradient(135deg, var(--lime), var(--cyan));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .success-card h3{font-family:'Orbitron'; font-size:18px; margin-bottom:14px;}
+  .success-card p{color:var(--ink-dim); font-size:14px; margin-bottom:10px; line-height:1.6;}
+  .success-card .steps{text-align:left; background:rgba(255,255,255,0.04); border-radius:14px; padding:16px 18px; margin:18px 0; font-size:13px; color:var(--ink-dim);}
+  .success-card .steps li{margin-bottom:8px;}
+  .success-actions{display:flex; flex-direction:column; gap:10px; margin-top:20px;}
+  .btn-close{background:none; border:none; color:var(--ink-dim); font-size:13px; cursor:pointer; margin-top:8px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--glass-brd); padding:40px 0; margin-top:60px;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .footer-row p{color:var(--ink-dim); font-size:13px;}
+
+  ::selection{background:var(--lime); color:#04120f;}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark">K</div>
+      <div class="brand-name">KADEK <span>BIKE</span> RENTAL</div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">Tentang</a>
+      <a href="#motor">Motor</a>
+      <a href="#mobil">Mobil</a>
+      <a href="#promo">Promo</a>
+      <a href="#booking">Sewa Sekarang</a>
+    </div>
+    <button class="nav-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Booking</button>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> ONLINE 24 JAM · BALI, INDONESIA</div>
+      <h1 class="hero-title">Jelajahi Bali<br>dengan Bebas.</h1>
+      <p class="hero-sub">Sewa motor &amp; mobil terpercaya untuk wisatawan lokal maupun mancanegara. Unit terawat, harga transparan, antar-jemput ke hotel — proses cepat tanpa ribet.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Mulai Sewa →</button>
+        <button class="btn-ghost" onclick="document.getElementById('motor').scrollIntoView({behavior:'smooth'})">Lihat Unit Tersedia</button>
+      </div>
+      <div class="founder-strip">
+        <div class="founder-avatar">A</div>
+        <span>Didirikan oleh <b style="color:var(--ink)">Ariel</b>, Founder Kadek Bike Rental — dikelola langsung tim lokal Bali.</span>
+      </div>
+    </div>
+
+    <div class="qr-card">
+      <h3>SCAN &amp; CHAT ADMIN</h3>
+      <p>Scan kode di bawah untuk langsung terhubung ke WhatsApp admin rental kami.</p>
+      <div class="qr-box" id="qrcode"></div>
+      <div class="qr-foot">
+        <span>Admin WhatsApp</span>
+        <span class="wa-num">0895-3352-5254</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Tentang Kami</span>
+      <h2 class="section-title">Siapa Kami, Tujuan Kami, dan Kenapa Wisatawan Percaya Kami</h2>
+      <p class="section-sub">Kadek Bike Rental hadir untuk membuat perjalanan Anda di Bali lebih mudah, aman, dan bebas ribet — baik Anda wisatawan lokal maupun dari luar negeri.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-icon" style="background:rgba(35,213,240,0.14);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#23D5F0" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </div>
+        <h4>Siapa Kami</h4>
+        <p>Kami adalah penyedia jasa rental motor &amp; mobil lokal Bali, didirikan oleh Ariel bersama tim yang memahami medan, lalu lintas, dan kebutuhan wisatawan di setiap sudut pulau.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon" style="background:rgba(198,255,58,0.14);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C6FF3A" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+        </div>
+        <h4>Tujuan Kami</h4>
+        <p>Memberikan solusi transportasi yang praktis, aman, dan terpercaya, sehingga wisatawan bisa menjelajahi Bali dengan nyaman tanpa harus repot mengurus transportasi.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon" style="background:rgba(255,184,77,0.16);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFB84D" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h4>Keuntungan Anda</h4>
+        <p>Harga transparan, unit terawat &amp; bergaransi, antar-jemput gratis ke hotel, proses booking cepat, dan admin siap membantu dalam Bahasa Indonesia maupun Inggris.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CATALOG ================= -->
+<section class="section" id="motor">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Katalog Kendaraan</span>
+      <h2 class="section-title">Pilih Motor atau Mobil Sesuai Kebutuhan</h2>
+      <p class="section-sub">Semua harga motor sudah sesuai kapasitas mesin (CC). Semua unit dicek rutin sebelum diserahkan.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('motor', this)">🛵 Motor</button>
+      <button class="tab-btn" onclick="switchTab('mobil', this)">🚗 Mobil</button>
+    </div>
+
+    <div id="motor-grid" class="grid-cards"></div>
+    <div id="mobil-grid" class="grid-cards" style="display:none;"></div>
+  </div>
+</section>
+
+<!-- ================= PROMO ================= -->
+<div class="promo" id="promo">
+  <div class="promo-marquee" id="marquee"></div>
+</div>
+
+<!-- ================= PAYMENT ================= -->
+<section class="section" id="pembayaran">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Pembayaran</span>
+      <h2 class="section-title">Transfer Mudah ke Rekening BCA</h2>
+      <p class="section-sub">Setelah booking dikonfirmasi admin, lakukan pembayaran melalui transfer bank berikut.</p>
+    </div>
+    <div class="pay-card">
+      <div class="pay-left">
+        <div class="bca-badge"><span>BCA</span></div>
+        <div>
+          <div class="pay-acc">6470371470</div>
+          <div class="pay-name">a.n. Kadek Bike Rental (Ariel) — Bank Central Asia</div>
+        </div>
+      </div>
+      <button class="copy-btn" onclick="copyRek()">📋 Salin Nomor Rekening</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BOOKING FORM ================= -->
+<section class="section" id="booking">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Form Booking</span>
+      <h2 class="section-title">Isi Data Diri untuk Mulai Sewa</h2>
+      <p class="section-sub">Lengkapi data di bawah, admin kami akan menghubungi Anda melalui WhatsApp untuk konfirmasi.</p>
+    </div>
+
+    <form class="form-shell" id="booking-form">
+      <div class="form-grid">
+        <div class="field">
+          <label>Nama Lengkap *</label>
+          <input type="text" required id="f-nama" placeholder="Contoh: John Smith">
+        </div>
+        <div class="field">
+          <label>Usia *</label>
+          <input type="number" required min="17" max="80" id="f-usia" placeholder="Contoh: 27">
+        </div>
+        <div class="field full">
+          <label>Alamat (Asal / Domisili) *</label>
+          <input type="text" required id="f-alamat" placeholder="Alamat lengkap sesuai identitas">
+        </div>
+        <div class="field">
+          <label>Nomor KTP *</label>
+          <input type="text" required id="f-ktp" placeholder="16 digit NIK KTP">
+          <small class="hint">Wisatawan asing dapat mengisi nomor identitas nasional.</small>
+        </div>
+        <div class="field">
+          <label>Asal Negara *</label>
+          <input type="text" required id="f-negara" placeholder="Contoh: Indonesia / Australia" oninput="togglePaspor()">
+        </div>
+        <div class="field" id="paspor-field">
+          <label>Nomor Paspor (khusus WNA) *</label>
+          <input type="text" id="f-paspor" placeholder="Nomor paspor">
+        </div>
+        <div class="field">
+          <label>No. WhatsApp Aktif *</label>
+          <input type="text" required id="f-wa" placeholder="08xxxxxxxxxx">
+        </div>
+        <div class="field full">
+          <label>Alamat Hotel / Penginapan di Bali *</label>
+          <input type="text" required id="f-hotel" placeholder="Nama & alamat hotel/villa tempat menginap">
+        </div>
+        <div class="field">
+          <label>Jenis Kendaraan *</label>
+          <select required id="f-kendaraan" onchange="updatePrice()"></select>
+        </div>
+        <div class="field">
+          <label>Durasi Sewa (hari) *</label>
+          <input type="number" required min="1" id="f-durasi" placeholder="Contoh: 5" oninput="updatePrice()">
+        </div>
+        <div class="field full">
+          <label>Estimasi Biaya</label>
+          <input type="text" id="f-estimasi" disabled placeholder="Pilih kendaraan & durasi untuk melihat estimasi">
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="btn-primary">Kirim & Hubungi Admin</button>
+        <span class="req-note">*wajib diisi · promo sewa 3 hari gratis 1 hari otomatis dihitung admin</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap footer-row">
+    <div class="brand">
+      <div class="brand-mark" style="width:30px;height:30px;font-size:13px;">K</div>
+      <div class="brand-name" style="font-size:13px;">KADEK <span>BIKE</span> RENTAL</div>
+    </div>
+    <p>© 2026 Kadek Bike Rental · Didirikan oleh Ariel · Bali, Indonesia</p>
+  </div>
+</footer>
+
+<!-- ================= SUCCESS OVERLAY ================= -->
+<div class="overlay" id="overlay">
+  <div class="success-card">
+    <div class="success-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#04120f" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+    </div>
+    <h3>Data Anda Berhasil Terkirim 🎉</h3>
+    <p>Terima kasih! Mohon tunggu, admin kami akan segera menghubungi Anda untuk konfirmasi.</p>
+    <div class="steps">
+      <li>Santai saja sambil menunggu — tidak perlu terburu-buru.</li>
+      <li>Motor/mobil akan kami antar langsung ke lokasi Anda.</li>
+      <li>Kami akan foto bersama saat serah terima kendaraan.</li>
+    </div>
+    <div class="success-actions">
+      <a class="btn-primary" id="wa-link" href="#" target="_blank">Lanjutkan Chat di WhatsApp →</a>
+      <button class="btn-close" onclick="document.getElementById('overlay').classList.remove('show')">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SVG ICON SYMBOLS ================= -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="ic-scooter" viewBox="0 0 64 64">
+      <g fill="none" stroke="#EAF6F6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="15" cy="47" r="8"/>
+        <circle cx="49" cy="47" r="8"/>
+        <path d="M15 47h6l6-16h10"/>
+        <path d="M37 31h8l6 10v6"/>
+        <path d="M23 31h-4l-3-8h9"/>
+        <path d="M37 22h6"/>
+      </g>
+      <circle cx="15" cy="47" r="2.4" fill="#23D5F0"/>
+      <circle cx="49" cy="47" r="2.4" fill="#23D5F0"/>
+    </symbol>
+    <symbol id="ic-maxi" viewBox="0 0 64 64">
+      <g fill="none" stroke="#EAF6F6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="14" cy="46" r="8"/>
+        <circle cx="50" cy="46" r="8"/>
+        <path d="M14 46h8l8-14h9l6 8"/>
+        <path d="M39 32h9l6 6v8"/>
+        <path d="M22 32h-5l-2-9h11"/>
+        <path d="M45 22h7"/>
+        <path d="M30 46h14"/>
+      </g>
+      <circle cx="14" cy="46" r="2.4" fill="#C6FF3A"/>
+      <circle cx="50" cy="46" r="2.4" fill="#C6FF3A"/>
+    </symbol>
+    <symbol id="ic-mpv" viewBox="0 0 64 64">
+      <g fill="none" stroke="#EAF6F6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 44V33l6-11h20l10 11h10v11"/>
+        <path d="M8 44h46"/>
+        <path d="M14 26h28"/>
+        <circle cx="18" cy="44" r="6"/>
+        <circle cx="46" cy="44" r="6"/>
+      </g>
+      <circle cx="18" cy="44" r="2" fill="#FFB84D"/>
+      <circle cx="46" cy="44" r="2" fill="#FFB84D"/>
+    </symbol>
+    <symbol id="ic-suv" viewBox="0 0 64 64">
+      <g fill="none" stroke="#EAF6F6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 44V31l7-9h10l6 9h13l6 9v4"/>
+        <path d="M6 44h48"/>
+        <path d="M16 22h18"/>
+        <circle cx="17" cy="44" r="6.5"/>
+        <circle cx="47" cy="44" r="6.5"/>
+      </g>
+      <circle cx="17" cy="44" r="2" fill="#23D5F0"/>
+      <circle cx="47" cy="44" r="2" fill="#23D5F0"/>
+    </symbol>
+    <symbol id="ic-van" viewBox="0 0 64 64">
+      <g fill="none" stroke="#EAF6F6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 44V24h34l12 10v10"/>
+        <path d="M6 44h46"/>
+        <path d="M40 24v10h12"/>
+        <circle cx="16" cy="44" r="6"/>
+        <circle cx="46" cy="44" r="6"/>
+      </g>
+      <circle cx="16" cy="44" r="2" fill="#C6FF3A"/>
+      <circle cx="46" cy="44" r="2" fill="#C6FF3A"/>
+    </symbol>
+    <symbol id="ic-lux" viewBox="0 0 64 64">
+      <g fill="none" stroke="#EAF6F6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 43V32l8-10h12l7 8h11l8 8v5"/>
+        <path d="M5 43h54"/>
+        <path d="M15 22h20"/>
+        <circle cx="17" cy="43" r="6.5"/>
+        <circle cx="48" cy="43" r="6.5"/>
+      </g>
+      <circle cx="17" cy="43" r="2" fill="#FFB84D"/>
+      <circle cx="48" cy="43" r="2" fill="#FFB84D"/>
+      <path d="M32 8l2 5-2 3-2-3z" fill="#FFB84D"/>
+    </symbol>
+    <symbol id="ic-box" viewBox="0 0 64 64">
+      <g fill="none" stroke="#EAF6F6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 44V20h30v24"/>
+        <path d="M36 30h12l8 8v6"/>
+        <path d="M6 44h50"/>
+        <circle cx="16" cy="44" r="6"/>
+        <circle cx="46" cy="44" r="6"/>
+      </g>
+      <circle cx="16" cy="44" r="2" fill="#23D5F0"/>
+      <circle cx="46" cy="44" r="2" fill="#23D5F0"/>
+    </symbol>
+  </defs>
+</svg>
+
+<script>
+/* ================= DATA ================= */
+/* Catatan: jumlah unit tersedia di bawah adalah CONTOH — silakan ubah sesuai stok asli Anda di array ini. */
+const MOTOR = [
+  {name:"Honda Scoopy", cc:110, icon:"ic-scooter", unit:8},
+  {name:"Honda Beat", cc:110, icon:"ic-scooter", unit:10},
+  {name:"Honda Vario 125/150", cc:150, icon:"ic-scooter", unit:7},
+  {name:"Yamaha Gear", cc:125, icon:"ic-scooter", unit:6},
+  {name:"Yamaha Fazzio", cc:125, icon:"ic-scooter", unit:5},
+  {name:"Yamaha Freego", cc:125, icon:"ic-scooter", unit:5},
+  {name:"Yamaha Lexi", cc:125, icon:"ic-scooter", unit:5},
+  {name:"Honda PCX", cc:160, icon:"ic-maxi", unit:4, hot:true},
+  {name:"Yamaha NMAX", cc:155, icon:"ic-maxi", unit:6, hot:true},
+  {name:"Yamaha XMAX", cc:250, icon:"ic-maxi", unit:3},
+];
+/* Catatan: harga mobil di bawah adalah ESTIMASI pasar rental Bali (belum disebutkan di brief) — mohon sesuaikan dengan harga rental Anda. */
+const MOBIL = [
+  {name:"Toyota Avanza", type:"MPV 7-seat", icon:"ic-mpv", unit:3, price:350000},
+  {name:"Daihatsu Xenia", type:"MPV 7-seat", icon:"ic-mpv", unit:3, price:350000},
+  {name:"Daihatsu Rocky", type:"SUV Compact", icon:"ic-suv", unit:2, price:450000},
+  {name:"Toyota Rush", type:"SUV 7-seat", icon:"ic-suv", unit:2, price:450000},
+  {name:"Daihatsu Terios", type:"SUV 7-seat", icon:"ic-suv", unit:2, price:450000},
+  {name:"Toyota HiAce", type:"Van 15-seat", icon:"ic-van", unit:2, price:950000},
+  {name:"Toyota Alphard", type:"Luxury MPV", icon:"ic-lux", unit:1, price:1500000},
+  {name:"Mobil Box (Pindahan)", type:"Box Angkut", icon:"ic-box", unit:2, price:500000},
+];
+
+function motorPrice(cc){ return cc <= 150 ? 85000 : 110000; }
+function rupiah(n){ return "Rp " + n.toLocaleString("id-ID"); }
+
+/* ================= RENDER CATALOG ================= */
+function renderMotor(){
+  const el = document.getElementById("motor-grid");
+  el.innerHTML = MOTOR.map(m => `
+    <div class="v-card">
+      ${m.hot ? '<div class="v-badge hot">★ Populer</div>' : `<div class="v-badge">${m.cc} CC</div>`}
+      <div class="v-icon-wrap"><svg><use href="#${m.icon}"></use></svg></div>
+      <div class="v-name">${m.name}</div>
+      <div class="v-cc">Kapasitas mesin ${m.cc} CC · Matic</div>
+      <div class="v-foot">
+        <div class="v-price">${rupiah(motorPrice(m.cc))}<br><small>/ hari</small></div>
+        <div class="v-stock">Tersedia<br><b>${m.unit} unit</b></div>
+      </div>
+    </div>
+  `).join("");
+}
+function renderMobil(){
+  const el = document.getElementById("mobil-grid");
+  el.innerHTML = MOBIL.map(m => `
+    <div class="v-card">
+      <div class="v-badge">${m.type}</div>
+      <div class="v-icon-wrap"><svg><use href="#${m.icon}"></use></svg></div>
+      <div class="v-name">${m.name}</div>
+      <div class="v-cc">${m.type}</div>
+      <div class="v-foot">
+        <div class="v-price">${rupiah(m.price)}<br><small>/ hari</small></div>
+        <div class="v-stock">Tersedia<br><b>${m.unit} unit</b></div>
+      </div>
+    </div>
+  `).join("");
+}
+function switchTab(tab, btn){
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("motor-grid").style.display = tab === "motor" ? "grid" : "none";
+  document.getElementById("mobil-grid").style.display = tab === "mobil" ? "grid" : "none";
+}
+
+/* ================= PROMO MARQUEE ================= */
+function renderMarquee(){
+  const item = `<span>🔥 SEWA <em>3 HARI</em> GRATIS <em>1 HARI</em></span><span>🏍️ MOTOR MULAI ${rupiah(85000)}/HARI</span><span>🚗 MOBIL LENGKAP UNTUK KELUARGA & PINDAHAN</span>`;
+  document.getElementById("marquee").innerHTML = item + item;
+}
+
+/* ================= BOOKING SELECT ================= */
+function fillVehicleSelect(){
+  const sel = document.getElementById("f-kendaraan");
+  let html = `<optgroup label="Motor">` + MOTOR.map(m => `<option value="motor|${m.name}|${motorPrice(m.cc)}">${m.name} (${m.cc}cc)</option>`).join("") + `</optgroup>`;
+  html += `<optgroup label="Mobil">` + MOBIL.map(m => `<option value="mobil|${m.name}|${m.price}">${m.name} (${m.type})</option>`).join("") + `</optgroup>`;
+  sel.innerHTML = `<option value="">-- Pilih kendaraan --</option>` + html;
+}
+function updatePrice(){
+  const sel = document.getElementById("f-kendaraan").value;
+  const durasi = parseInt(document.getElementById("f-durasi").value) || 0;
+  const est = document.getElementById("f-estimasi");
+  if(!sel || !durasi){ est.value = ""; return; }
+  const [, , priceStr] = sel.split("|");
+  const price = parseInt(priceStr);
+  let hariBayar = durasi;
+  let promoText = "";
+  // promo: setiap kelipatan 3 hari sewa, dapat 1 hari gratis
+  const gratis = Math.floor(durasi / 3);
+  if(gratis > 0){
+    hariBayar = durasi - gratis;
+    promoText = ` (promo: gratis ${gratis} hari)`;
+  }
+  est.value = rupiah(price * hariBayar) + promoText + " — untuk " + durasi + " hari sewa";
+}
+
+/* ================= PASPOR TOGGLE ================= */
+function togglePaspor(){
+  const negara = document.getElementById("f-negara").value.trim().toLowerCase();
+  const field = document.getElementById("paspor-field");
+  const paspor = document.getElementById("f-paspor");
+  const isForeign = negara.length > 0 && !["indonesia","id","wni"].includes(negara);
+  field.style.display = isForeign ? "flex" : "none";
+  paspor.required = isForeign;
+}
+
+/* ================= COPY REKENING ================= */
+function copyRek(){
+  navigator.clipboard.writeText("6470371470").then(() => {
+    const btn = event.target;
+    const old = btn.textContent;
+    btn.textContent = "✅ Tersalin!";
+    setTimeout(() => btn.textContent = old, 1800);
+  });
+}
+
+/* ================= FORM SUBMIT ================= */
+document.getElementById("booking-form").addEventListener("submit", function(e){
+  e.preventDefault();
+  const nama = document.getElementById("f-nama").value;
+  const usia = document.getElementById("f-usia").value;
+  const alamat = document.getElementById("f-alamat").value;
+  const ktp = document.getElementById("f-ktp").value;
+  const negara = document.getElementById("f-negara").value;
+  const paspor = document.getElementById("f-paspor").value;
+  const waUser = document.getElementById("f-wa").value;
+  const hotel = document.getElementById("f-hotel").value;
+  const kendaraanSel = document.getElementById("f-kendaraan");
+  const kendaraanText = kendaraanSel.options[kendaraanSel.selectedIndex]?.text || "-";
+  const durasi = document.getElementById("f-durasi").value;
+  const estimasi = document.getElementById("f-estimasi").value;
+
+  let msg = `Halo Admin Kadek Bike Rental, saya ingin booking:%0A`;
+  msg += `Nama: ${nama}%0AUsia: ${usia}%0AAlamat: ${alamat}%0ANo. KTP: ${ktp}%0AAsal Negara: ${negara}%0A`;
+  if(paspor) msg += `No. Paspor: ${paspor}%0A`;
+  msg += `No. WhatsApp: ${waUser}%0AHotel/Penginapan di Bali: ${hotel}%0AKendaraan: ${kendaraanText}%0ADurasi Sewa: ${durasi} hari%0AEstimasi Biaya: ${estimasi}`;
+
+  document.getElementById("wa-link").href = `https://wa.me/62895335252540?text=${msg}`;
+  document.getElementById("overlay").classList.add("show");
+});
+
+/* ================= QR CODE ================= */
+new QRCode(document.getElementById("qrcode"), {
+  text: "https://wa.me/62895335252540?text=Halo%20Admin%20Kadek%20Bike%20Rental%2C%20saya%20ingin%20bertanya%20tentang%20sewa%20motor%2Fmobil.",
+  width: 150,
+  height: 150,
+  colorDark: "#060B13",
+  colorLight: "#ffffff",
+  correctLevel: QRCode.CorrectLevel.H
+});
+
+/* ================= INIT ================= */
+renderMotor();
+renderMobil();
+renderMarquee();
+fillVehicleSelect();
+</script>
+</body>
+</html>
